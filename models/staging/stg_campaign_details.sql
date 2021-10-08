@@ -8,7 +8,8 @@ with campaign_details as (
        Total_Open_Rate,
        Unique_Opens,
        Unique_Open_Rate,
-       Subscriber_Clicks as Total_Clicks,
+       Clicks,
+       Subscriber_Clicks,
        Subscriber_Click_Rate,
        Total_Unsubscribes
     from analytics.core.campaign_details

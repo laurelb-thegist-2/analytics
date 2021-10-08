@@ -35,3 +35,5 @@ models:
     core:
         staging:
             +materialized: table
+        fact:
+            +materialized: table
