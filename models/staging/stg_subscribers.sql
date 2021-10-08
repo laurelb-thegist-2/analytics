@@ -1,7 +1,3 @@
-{{ config (
-    materialized="table"
-)}}
-
 with subscribers as ( 
     select 
         EMAILADDRESS AS email_address,

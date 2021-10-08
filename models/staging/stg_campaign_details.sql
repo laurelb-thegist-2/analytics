@@ -1,7 +1,3 @@
-{{ config (
-    materialized="table"
-)}}
-
 with campaign_details as ( 
     select 
        CAMPAIGNID AS Campaign_ID,
