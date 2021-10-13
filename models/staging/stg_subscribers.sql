@@ -1,6 +1,6 @@
 with subscribers as ( 
     select 
-        EMAILADDRESS AS email_address,
+        EMAILADDRESS AS EMAIL,
         LISTID as list_ID,
         DATE as date_status_changed,
         STATUS,
