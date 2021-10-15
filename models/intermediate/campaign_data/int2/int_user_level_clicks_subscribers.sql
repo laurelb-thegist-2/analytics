@@ -8,9 +8,9 @@ subscriber_summary as (
 
 user_level_clicks_subscribers as (
     select 
-        user_level_clicks.CAMPAIGN_DATE,
-        user_level_clicks.NAME,
         user_level_clicks.CAMPAIGN_ID,
+        user_level_clicks.NAME,
+        user_level_clicks.CAMPAIGN_DATE,
         subscriber_summary.Country,
         count(user_level_clicks.email) total_clicks,
         count(distinct user_level_clicks.email) unique_clicks

@@ -7,10 +7,10 @@ subscriber_summary as (
 ),
 
 user_level_sends_subscribers as (
-    select 
-        user_level_sends.CAMPAIGN_DATE,
+    select
+        user_level_sends.CAMPAIGN_ID, 
         user_level_sends.Name,
-        user_level_sends.CAMPAIGN_ID,
+        user_level_sends.CAMPAIGN_DATE,
         subscriber_summary.Country,
         count(user_level_sends.email) total_sends
     from user_level_sends

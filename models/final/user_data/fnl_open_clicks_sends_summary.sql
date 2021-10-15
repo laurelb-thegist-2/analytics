@@ -30,12 +30,12 @@ OPENS_CLICKS_SENDS_SUMMARY as
 )
 
 SELECT SUBSCRIBERS.Growth_Channel,
-count(SUBSCRIBERS.EMAIL) as Emails,
-sum(total_sends) as SENDS,
-sum(unique_opens) as UNIQUE_OPENS,
-sum(total_clicks) as TOTAL_CLICKS,
-sum(unique_opens)/sum(total_sends) as OPEN_RATE,
-sum(total_clicks)/sum(total_sends) as CLICK_RATE
+    count(SUBSCRIBERS.EMAIL) as Emails,
+    sum(total_sends) as SENDS,
+    sum(unique_opens) as UNIQUE_OPENS,
+    sum(total_clicks) as TOTAL_CLICKS,
+    sum(unique_opens)/sum(total_sends) as OPEN_RATE,
+    sum(total_clicks)/sum(total_sends) as CLICK_RATE
 FROM OPENS_CLICKS_SENDS_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 Where SUBSCRIBERS.list_id = '54eb7610971ecdad5354d8d07b2b6397' 
