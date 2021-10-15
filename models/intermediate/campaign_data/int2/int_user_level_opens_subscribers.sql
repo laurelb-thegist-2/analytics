@@ -9,8 +9,8 @@ subscriber_summary as (
 user_level_opens_subscribers as (
     select 
         user_level_opens.CAMPAIGN_DATE,
-        user_level_opens.NAME,
-        user_level_opens.Campaign_ID,
+        user_level_opens.Name,
+        user_level_opens.CAMPAIGN_ID,
         subscriber_summary.Country,
         count(user_level_opens.email) total_opens,
         count(distinct user_level_opens.email) unique_opens

@@ -8,16 +8,13 @@ user_level_clicks_subscribers as (
 
 user_level_opens_clicks_subscribers as (
     select 
-        user_level_opens_subscribers.NAME,
-        user_level_opens_subscribers.CAMPAIGN_DATE,
-        user_level_opens_subscribers.Campaign_ID,
-        user_level_opens_subscribers.COUNTRY,
-        user_level_opens_subscribers.TOTAL_OPENS,
-        user_level_opens_subscribers.UNIQUE_OPENS,
-        user_level_clicks_subscribers.TOTAL_CLICKS,
-        user_level_clicks_subscribers.UNIQUE_CLICKS
+    user_level_opens_subscribers.*,
+    user_level_clicks_subscribers.Total_Clicks,
+    user_level_clicks_subscribers.Unique_Clicks
     from user_level_opens_subscribers
-    LEFT JOIN user_level_clicks_subscribers using (Campaign_ID)
+    LEFT JOIN user_level_clicks_subscribers 
+    USING (CAMPAIGN_DATE, Name, Campaign_ID, COUNTRY)
+    WHERE CAMPAIGN_DATE ilike '%2021-10-03%'
 )
 
 select * from user_level_opens_clicks_subscribers
