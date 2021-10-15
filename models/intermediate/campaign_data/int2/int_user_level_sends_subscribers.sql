@@ -15,7 +15,6 @@ user_level_sends_subscribers as (
         count(user_level_sends.email) total_sends
     from user_level_sends
     LEFT JOIN subscriber_summary using (email)
-    WHERE CAMPAIGN_DATE > '2021-10-01'
     GROUP BY 1,2,3,4
     ORDER BY CAMPAIGN_DATE DESC
 )

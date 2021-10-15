@@ -15,8 +15,7 @@ user_level_clicks as (
         EMAIL_EVENTS.ACTION
     from email_events 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
-WHERE ACTION = 'click' AND CAMPAIGN_DATE IS NOT NULL
-ORDER BY CAMPAIGN_DATE DESC
+WHERE ACTION = 'click'
 )
 
 select * from user_level_clicks

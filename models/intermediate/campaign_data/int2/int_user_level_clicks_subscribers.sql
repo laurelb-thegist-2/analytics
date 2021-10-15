@@ -16,7 +16,6 @@ user_level_clicks_subscribers as (
         count(distinct user_level_clicks.email) unique_clicks
     from user_level_clicks
     LEFT JOIN subscriber_summary using (email)
-    WHERE CAMPAIGN_DATE > '2021-10-01'
     GROUP BY 1,2,3,4
     ORDER BY CAMPAIGN_DATE DESC
 )
