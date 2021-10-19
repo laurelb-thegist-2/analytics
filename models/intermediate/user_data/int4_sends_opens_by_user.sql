@@ -1,9 +1,9 @@
 with SEND_SUMMARY as (
-    select * from {{ref('int_send_summary')}}
+    select * from {{ref('int1_sends_by_user')}}
 ),
 
 OPEN_SUMMARY as (
-    select * from {{ref('int_open_summary')}}
+    select * from {{ref('int2_opens_by_user')}}
 ),
 
 OPEN_SEND_SUMMARY as 

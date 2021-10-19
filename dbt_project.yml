@@ -39,4 +39,4 @@ models:
             user_data:
                 +materialized: view
         final:
-            +materialized: table
+            +materialized: view

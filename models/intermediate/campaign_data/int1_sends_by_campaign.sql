@@ -6,7 +6,7 @@ CAMPAIGN_DETAILS as (
     select * from {{ref('stg_campaign_details')}}
 ),
 
-user_level_sends as (
+sends as (
     select
         CAMPAIGN_DATE,
         Campaign_ID,
@@ -16,4 +16,4 @@ user_level_sends as (
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
 )
 
-select * from user_level_sends
+select * from sends

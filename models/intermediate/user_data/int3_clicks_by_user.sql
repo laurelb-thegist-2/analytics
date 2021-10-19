@@ -14,7 +14,7 @@ CLICK_SUMMARY as (
         count(EMAIL_EVENTS.URL) CLICKS
     from EMAIL_EVENTS 
     LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID) 
-    WHERE NAME ilike '%newsletter%' and EMAIL_EVENTS.URL is not null
+    WHERE EMAIL_EVENTS.URL is not null
     GROUP BY 1
 )
 
