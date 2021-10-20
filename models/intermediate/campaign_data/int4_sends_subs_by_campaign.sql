@@ -12,10 +12,11 @@ sends_subscribers as (
         sends.Name,
         sends.CAMPAIGN_DATE,
         subscribers.Country,
+        sends.total_unsubscribes,
         count(sends.email) total_sends
     from sends
     LEFT JOIN subscribers using (email)
-    GROUP BY 1,2,3,4
+    GROUP BY 1,2,3,4,5
     ORDER BY CAMPAIGN_DATE DESC
 )
 

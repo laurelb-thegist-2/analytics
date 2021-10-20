@@ -7,10 +7,10 @@ SUBSCRIBERS as (
 ),
 
 new_subs_by_growth_channel as (
-SELECT SUBSCRIBERS.Growth_Channel,
+SELECT SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
     SUBSCRIBERS.source_brand,
     SUBSCRIBERS.campaign_name,
-    count(SUBSCRIBERS.EMAIL) as Emails
+    count(SUBSCRIBERS.EMAIL) as GROWTH
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND >'2021-10-10' 

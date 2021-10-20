@@ -13,7 +13,7 @@ with campaign_details as (
        Subscriber_Click_Rate,
        Total_Unsubscribes
     from analytics.core.campaign_details
-    WHERE NAME ilike '%newsletter%'
+    WHERE LOWER(NAME) ilike '%newsletter%'
 )
 
 select * from campaign_details

@@ -9,7 +9,7 @@ SELECT Growth_Channel,
     status,
     source_brand,
     campaign_name,
-    count(EMAIL) as Total_Emails
+    count(EMAIL) as Churn
 FROM SUBSCRIBERS 
 WHERE date_status_changed >'2021-10-10' 
 AND date_status_changed < '2021-10-18'

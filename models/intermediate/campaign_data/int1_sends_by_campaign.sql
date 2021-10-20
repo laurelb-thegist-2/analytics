@@ -11,7 +11,8 @@ sends as (
         CAMPAIGN_DATE,
         Campaign_ID,
         NAME,
-        EMAIL_SENDS.email
+        EMAIL_SENDS.email,
+        Total_Unsubscribes
     from email_sends 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
 )
