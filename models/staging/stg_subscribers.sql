@@ -5,7 +5,7 @@ with subscribers as (
         DATE as date_status_changed,
         STATUS,
         GROWTHCHANNEL as growth_channel,
-        Upper(COUNTRY) as country,
+        COUNTRY as country,
         CITIES,
         REFERRALCODE as referral_code,
         REFERRALCOUNT as referral_count,
