@@ -21,6 +21,7 @@ SELECT SUBSCRIBERS.EMAIL as Email,
     sum(total_clicks)/sum(total_sends) as CLICK_RATE
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
+where email ilike '%burnertest%'
 Group by 1,2,3,4,5,6,7
 )
 

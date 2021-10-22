@@ -12,11 +12,12 @@ clicks_subscribers as (
         clicks.NAME,
         clicks.CAMPAIGN_DATE,
         subscribers.Country,
+        URL,
         count(clicks.email) total_clicks,
         count(distinct clicks.email) unique_clicks
     from clicks
     LEFT JOIN subscribers using (email)
-    GROUP BY 1,2,3,4
+    GROUP BY 1,2,3,4,5
     ORDER BY CAMPAIGN_DATE DESC
 )
 

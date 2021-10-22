@@ -12,6 +12,7 @@ user_level_clicks as (
         Campaign_Details.CAMPAIGN_DATE,
         EMAIL_EVENTS.Campaign_ID,
         EMAIL_EVENTS.email,
+        URL,
         EMAIL_EVENTS.ACTION
     from email_events 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
