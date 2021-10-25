@@ -16,7 +16,8 @@ user_level_clicks as (
         EMAIL_EVENTS.ACTION
     from email_events 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
-WHERE ACTION = 'click'
+WHERE ACTION = 'click' and CAMPAIGN_DATE = '2021-10-18'
 )
 
 select * from user_level_clicks
+limit 1000000

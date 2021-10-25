@@ -26,10 +26,11 @@ campaign_data_by_country as (
     sum(opens_clicks_subscribers.Total_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_CTOR,
     sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR
     from opens_clicks_subscribers
-    LEFT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
-    WHERE Campaign_Date > '2021-09-30' 
+    RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
+    WHERE Campaign_Date = '2021-10-18' 
     GROUP BY 1,2
     ORDER BY 1,2 DESC
 )
 
-select * from campaign_data_by_country
+select *
+from campaign_data_by_country

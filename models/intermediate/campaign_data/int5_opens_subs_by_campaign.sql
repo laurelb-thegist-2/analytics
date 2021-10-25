@@ -11,11 +11,12 @@ opens_subscribers as (
         opens.CAMPAIGN_ID,
         opens.Name,
         opens.CAMPAIGN_DATE,
-        subscribers.Country,
+        coalesce(subscribers.Country, 'US') Country,
         count(opens.email) total_opens,
         count(distinct opens.email) unique_opens
     from opens
     LEFT JOIN subscribers using (email)
+    WHERE CAMPAIGN_DATE = '2021-10-18'
     GROUP BY 1,2,3,4
     ORDER BY CAMPAIGN_DATE DESC
 )

@@ -11,10 +11,12 @@ sends as (
         CAMPAIGN_DATE,
         Campaign_ID,
         NAME,
-        EMAIL_SENDS.email,
-        Total_Unsubscribes
+        Total_Unsubscribes,
+        EMAIL_SENDS.email
     from email_sends 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
+WHERE CAMPAIGN_DATE = '2021-10-18'
 )
 
 select * from sends
+limit 1000000

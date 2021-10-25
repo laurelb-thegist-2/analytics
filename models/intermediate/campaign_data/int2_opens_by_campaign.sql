@@ -15,7 +15,8 @@ user_level_opens as (
         EMAIL_EVENTS.Action
     from email_events 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
-WHERE ACTION = 'open'
+WHERE ACTION = 'open' and CAMPAIGN_DATE = '2021-10-18'
 )
 
 select * from user_level_opens
+limit 1000000
