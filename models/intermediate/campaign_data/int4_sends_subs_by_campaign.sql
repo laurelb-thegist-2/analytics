@@ -12,11 +12,11 @@ sends_subscribers as (
         sends.Name,
         sends.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
+        Total_Unsubscribes,
         count(distinct sends.email) Total_Sends
     from sends
     LEFT JOIN subscribers using (email)
-    WHERE CAMPAIGN_DATE = '2021-10-18'
-    GROUP BY 1, 2, 3, 4
+    GROUP BY 1, 2, 3, 4, 5
     ORDER BY CAMPAIGN_DATE
 )
 

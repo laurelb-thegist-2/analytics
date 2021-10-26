@@ -19,7 +19,6 @@ opens_clicks_subscribers as (
     from opens_subscribers
     LEFT JOIN clicks_subscribers 
     USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY)
-    WHERE CAMPAIGN_DATE = '2021-10-18'
     GROUP BY 1, 2, 3, 4, 5, 6
     ORDER BY 1
 )

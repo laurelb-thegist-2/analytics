@@ -29,7 +29,6 @@ campaign_data_by_date as (
     (SUM(sends_subscribers.total_unsubscribes)/2) / sum(opens_clicks_subscribers.Unique_Opens) Unsubscribe_per_Open
     from opens_clicks_subscribers
     LEFT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
-    WHERE Campaign_Date > '2021-09-30' 
     GROUP BY 1
     ORDER BY 1 DESC
 )

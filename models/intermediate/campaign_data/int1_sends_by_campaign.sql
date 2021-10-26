@@ -15,7 +15,6 @@ sends as (
         EMAIL_SENDS.email
     from email_sends 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
-WHERE CAMPAIGN_DATE = '2021-10-18'
 )
 
 select * from sends
