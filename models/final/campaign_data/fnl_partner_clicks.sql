@@ -1,18 +1,23 @@
-with click_subscribers as (
-    select * from {{ref('int6_clicks_subs_by_campaign')}}
+with clicks as (
+    select * from {{ref('int3_clicks_by_campaign')}}
 ),
 
-partner_clicks as ( 
+subscribers as (
+    select * from {{ref('stg_subscribers')}}
+),
+
+link_clicks as (
     select 
-        Campaign_Date,
-        Country,
-        sum(Total_Clicks) Total_Clicks,
-        sum(Unique_Clicks) Unique_Clicks
-    from click_subscribers
-    where URL ilike '%penguin%'
-    AND Campaign_Date ilike '%2021-10-19%'
-    GROUP BY 1, 2
-    ORDER BY 1 DESC
+        clicks.CAMPAIGN_DATE,
+        clicks.NAME,
+        coalesce(subscribers.Country, 'US') Country,
+        count(clicks.email) total_clicks,
+        count(distinct clicks.email) unique_clicks
+    from clicks
+    LEFT JOIN subscribers using (email)
+    Where CAMPAIGN_DATE = '2021-10-18' and URL ilike '%TheNextHoops%'
+    GROUP BY 1,2,3
+    ORDER BY CAMPAIGN_DATE DESC
 )
 
-select * from partner_clicks
+SELECT * FROM link_clicks
