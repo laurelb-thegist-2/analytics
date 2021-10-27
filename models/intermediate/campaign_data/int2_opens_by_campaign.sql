@@ -19,4 +19,3 @@ WHERE ACTION = 'open'
 )
 
 select * from user_level_opens
-limit 1000000

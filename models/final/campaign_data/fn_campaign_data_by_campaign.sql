@@ -23,10 +23,10 @@ campaign_data_by_date as (
     sum(opens_clicks_subscribers.Total_Clicks) / sum(sends_subscribers.Total_Sends) Total_Click_Rate,
     sum(opens_clicks_subscribers.Unique_Clicks) / sum(sends_subscribers.Total_Sends)  Unique_Click_Rate,
     sum(opens_clicks_subscribers.Total_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_CTOR,
-    sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR,
-    SUM(sends_subscribers.total_unsubscribes)/2 Total_Unsubscribes,
-    (SUM(sends_subscribers.total_unsubscribes)/2) / sum(sends_subscribers.Total_Sends) Unsubscribe_Rate,
-    (SUM(sends_subscribers.total_unsubscribes)/2) / sum(opens_clicks_subscribers.Unique_Opens) Unsubscribe_per_Open
+    sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR
+    --SUM(sends_subscribers.total_unsubscribes)/2 Total_Unsubscribes,
+    --(SUM(sends_subscribers.total_unsubscribes)/2) / sum(sends_subscribers.Total_Sends) Unsubscribe_Rate,
+    --(SUM(sends_subscribers.total_unsubscribes)/2) / sum(opens_clicks_subscribers.Unique_Opens) Unsubscribe_per_Open
     from opens_clicks_subscribers
     LEFT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
     GROUP BY 1

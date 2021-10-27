@@ -20,4 +20,3 @@ WHERE ACTION = 'click'
 )
 
 select * from user_level_clicks
-limit 1000000

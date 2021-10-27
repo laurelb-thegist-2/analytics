@@ -12,13 +12,11 @@ sends_subscribers as (
         sends.Name,
         sends.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
-        Total_Unsubscribes,
         count(distinct sends.email) Total_Sends
     from sends
     LEFT JOIN subscribers using (email)
-    GROUP BY 1, 2, 3, 4, 5
+    GROUP BY 1, 2, 3, 4
     ORDER BY CAMPAIGN_DATE
 )
 
 SELECT * FROM sends_subscribers
-limit 1000000
