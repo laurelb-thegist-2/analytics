@@ -8,6 +8,7 @@ CAMPAIGN_DETAILS as (
 
 OPEN_SUMMARY as (
     SELECT EMAIL,
+        MIN(CAMPAIGN_DATE) FIRST_OPEN,
         MAX(CAMPAIGN_DATE) MOST_RECENT_OPEN,
         count(distinct EMAIL_EVENTS.Campaign_ID) UNIQUE_OPENS,
         count(EMAIL_EVENTS.URL) Clicks
