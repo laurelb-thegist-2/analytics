@@ -11,7 +11,7 @@ opens_subscribers as (
         opens.CAMPAIGN_ID,
         opens.Name,
         opens.CAMPAIGN_DATE,
-        coalesce(subscribers.Country, 'US') Country,
+        subscribers.Country,
         count(opens.email) total_opens,
         count(distinct opens.email) unique_opens
     from opens

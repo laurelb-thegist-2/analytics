@@ -11,7 +11,7 @@ clicks_subscribers as (
         clicks.CAMPAIGN_ID,
         clicks.NAME,
         clicks.CAMPAIGN_DATE,
-        coalesce(subscribers.Country, 'US') Country,
+        subscribers.Country,
         count(clicks.email) total_clicks,
         count(distinct clicks.email) unique_clicks
     from clicks

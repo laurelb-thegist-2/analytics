@@ -2,7 +2,7 @@ with campaign_details as (
     select 
        CAMPAIGNID AS Campaign_ID,
        Name,
-       Campaign_Date,
+       cast (Campaign_Date as Date) Campaign_Date,
        Total_Emails_Sent as Total_Sends,
        Opens as Total_Opens,
        Total_Open_Rate,
@@ -14,6 +14,7 @@ with campaign_details as (
        Total_Unsubscribes
     from analytics.core.campaign_details
     WHERE NAME ilike '%newsletter%'
+    order by 3 desc
 )
 
 select * from campaign_details
