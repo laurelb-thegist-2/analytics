@@ -2,7 +2,7 @@ with campaign_details as (
     select 
        CAMPAIGNID AS Campaign_ID,
        Name,
-       Campaign_Date,
+       cast(Campaign_Date as DATE) Campaign_Date,
        Total_Emails_Sent as Total_Sends,
        Opens as Total_Opens,
        Total_Open_Rate,

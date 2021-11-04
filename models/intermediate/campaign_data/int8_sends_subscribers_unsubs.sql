@@ -12,14 +12,15 @@ sends_subscribers_unsubs as (
         sends_subscribers.CAMPAIGN_ID, 
         sends_subscribers.Name,
         sends_subscribers.CAMPAIGN_DATE,
-        sends_subscribers.Country,
-        sends_subscribers.Total_Sends,
-        CAMPAIGN_DETAILS.Total_Unsubscribes
+        CAMPAIGN_DETAILS.Total_Unsubscribes,
+        sum(sends_subscribers.Total_Sends) Total_Sends
     from sends_subscribers
     LEFT JOIN CAMPAIGN_DETAILS using (CAMPAIGN_ID, Name, CAMPAIGN_DATE)
-ORDER BY 3 DESC
+    GROUP BY 1, 2, 3, 4
 )
 
 select * from sends_subscribers_unsubs
+where CAMPAIGN_DATE is not null
+order by CAMPAIGN_DATE desc
 
 

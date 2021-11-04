@@ -29,8 +29,9 @@ campaign_data_by_country as (
     RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
     -- Where Campaign_Date = '2021-10-18'
     GROUP BY 1,2
-    ORDER BY 1,2 DESC
 )
 
 select *
 from campaign_data_by_country
+WHERE Campaign_Date is not null
+ORDER BY Campaign_Date DESC

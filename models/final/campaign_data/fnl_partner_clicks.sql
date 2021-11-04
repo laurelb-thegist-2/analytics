@@ -17,7 +17,8 @@ link_clicks as (
     LEFT JOIN subscribers using (email)
     Where CAMPAIGN_DATE = '2021-10-18' and URL ilike '%TheNextHoops%'
     GROUP BY 1,2,3
-    ORDER BY CAMPAIGN_DATE DESC
 )
 
 SELECT * FROM link_clicks
+WHERE Campaign_Date is not null
+ORDER BY Campaign_Date DESC
