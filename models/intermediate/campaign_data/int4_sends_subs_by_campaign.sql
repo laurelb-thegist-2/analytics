@@ -11,7 +11,7 @@ sends_subscribers as (
         sends.CAMPAIGN_ID, 
         sends.Name,
         sends.CAMPAIGN_DATE,
-        subscribers.Country,
+        coalesce(subscribers.Country, 'US') Country,
         count(distinct sends.email) Total_Sends
     from sends
     LEFT JOIN subscribers using (email)
