@@ -25,11 +25,21 @@ user_data_summary as (
         coalesce(sum(total_sends), 0) as SENDS,
         coalesce(sum(unique_opens), 0) as UNIQUE_OPENS,
         coalesce(sum(total_clicks), 0) as TOTAL_CLICKS,
-        coalesce(sum(unique_opens)/sum(total_sends), 0) as UNIQUE_OPEN_RATE,
+        coalesce(sum(unique_opens)/sum(total_sends), 0) as OPEN_RATE,
         coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
 Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14
 )
 
-select * from user_data_summary
+select 
+   email,
+   Growth_Channel,
+   status,
+   referral_code,
+   cast(FIRST_SEND as DATE) first_send,
+   MOST_RECENT_SEND,
+   OPEN_RATE
+from user_data_summary
+Where referral_code is null and status = 'Active' and first_send < '2021-10-27'
+ORDER BY first_send DESC 
