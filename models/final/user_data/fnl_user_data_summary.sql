@@ -33,3 +33,5 @@ Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14
 )
 
 select * from user_data_summary
+--where Growth_Channel ilike '%dmipartners%'
+--limit 1000
