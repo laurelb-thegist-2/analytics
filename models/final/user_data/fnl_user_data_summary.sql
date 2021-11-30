@@ -8,7 +8,8 @@ SUBSCRIBERS as (
 
 user_data_summary as (
     SELECT 
-        SUBSCRIBERS.EMAIL as Email, 
+        SUBSCRIBERS.EMAIL as Email,
+        SUBSCRIBERS.LEADID, 
         SUBSCRIBERS.Growth_Channel,
         SUBSCRIBERS.status,
         SUBSCRIBERS.referral_code,
@@ -29,9 +30,9 @@ user_data_summary as (
         coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
-Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14
+Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 )
 
 select * from user_data_summary
---where Growth_Channel ilike '%dmipartners%'
---limit 1000
+where Growth_Channel ilike '%dmipartners%'
+limit 10000

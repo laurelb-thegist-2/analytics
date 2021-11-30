@@ -1,5 +1,5 @@
 with clicks as (
-    select * from {{ref('int3_clicks_by_campaign')}}
+    select * from {{ref('int3a_clicks_by_campaign')}}
 ),
 
 subscribers as (
