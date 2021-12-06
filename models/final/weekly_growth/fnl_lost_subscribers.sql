@@ -11,8 +11,8 @@ SELECT Growth_Channel,
     campaign_name,
     count(EMAIL) as Churn
 FROM SUBSCRIBERS 
-WHERE date_status_changed >'2021-10-10' 
-AND date_status_changed < '2021-10-18'
+WHERE date_status_changed >'2021-10-31' 
+AND date_status_changed < '2021-11-08'
 AND status <> 'Active'
 Group by 1,2,3,4
 ORDER BY 1 DESC
