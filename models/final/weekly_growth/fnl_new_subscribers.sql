@@ -7,7 +7,11 @@ SUBSCRIBERS as (
 ),
 
 new_subs_by_growth_channel as (
-SELECT SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
+SELECT 
+    SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
+    subscribers.Status,
+    coalesce(subscribers.Country, 'US') Country,
+    coalesce(subscribers.Cities, 'None') Cities,
     SUBSCRIBERS.source_brand,
     SUBSCRIBERS.campaign_name,
     count(SUBSCRIBERS.EMAIL) as GROWTH
@@ -15,7 +19,7 @@ FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND >'2021-10-31' 
 AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < '2021-11-08'
-Group by 1,2,3
+Group by 1,2,3,4,5,6
 ORDER BY 1 DESC
 )
 

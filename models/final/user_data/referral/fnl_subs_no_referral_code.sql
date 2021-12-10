@@ -11,6 +11,6 @@ select
    MOST_RECENT_SEND,
    UNIQUE_OPEN_RATE
 from user_data_summary
-Where referral_code is null and status = 'Active' and first_send < '2021-11-12' and UNIQUE_OPEN_RATE > 0.05
+Where referral_code is null and status = 'Active' and first_send < '2021-11-29' and UNIQUE_OPEN_RATE > 0.05
 ORDER BY first_send DESC 
 limit 50000

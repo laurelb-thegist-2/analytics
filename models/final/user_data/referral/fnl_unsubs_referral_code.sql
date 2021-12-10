@@ -13,3 +13,4 @@ select
 from user_data_summary
 Where referral_code is not null and status != 'Active'
 ORDER BY first_send DESC 
+limit 100000
