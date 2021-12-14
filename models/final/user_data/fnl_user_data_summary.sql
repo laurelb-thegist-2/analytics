@@ -33,4 +33,11 @@ LEFT JOIN SUBSCRIBERS using (EMAIL)
 Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 )
 
-select * from user_data_summary
+select
+    Cities,
+    count(distinct email),
+    avg(UNIQUE_OPEN_RATE) UNIQUE_OPEN_RATE
+from user_data_summary
+where status = 'Active'
+Group by 1
+

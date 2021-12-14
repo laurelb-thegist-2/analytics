@@ -33,5 +33,5 @@ campaign_data_by_country as (
 
 select *
 from campaign_data_by_country
-WHERE Campaign_Date is not null
-ORDER BY Campaign_Date DESC
+WHERE Campaign_Date is not null and Campaign_Date > '2020-12-31'
+ORDER BY Campaign_Date

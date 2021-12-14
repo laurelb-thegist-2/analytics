@@ -6,6 +6,7 @@ SUBSCRIBERS as (
 
 lost_subscribers as (
 SELECT 
+    date_status_changed Date,
     Growth_Channel,
     status,
     coalesce(Country, 'US') Country,
@@ -17,7 +18,7 @@ FROM SUBSCRIBERS
 WHERE date_status_changed >'2021-10-31' 
 AND date_status_changed < '2021-11-08'
 AND status <> 'Active'
-Group by 1,2,3,4,5,6
+Group by 1,2,3,4,5,6, 7
 ORDER BY 1 DESC
 )
 

@@ -8,6 +8,7 @@ SUBSCRIBERS as (
 
 new_subs_by_growth_channel as (
 SELECT 
+    FIRST_SEND Date,
     SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
     subscribers.Status,
     coalesce(subscribers.Country, 'US') Country,
@@ -19,7 +20,7 @@ FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND >'2021-10-31' 
 AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < '2021-11-08'
-Group by 1,2,3,4,5,6
+Group by 1,2,3,4,5,6,7
 ORDER BY 1 DESC
 )
 

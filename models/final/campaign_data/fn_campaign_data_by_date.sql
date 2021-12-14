@@ -33,5 +33,5 @@ campaign_data_by_date as (
 )
 
 select * from campaign_data_by_date
-WHERE Campaign_Date is not null
+WHERE Campaign_Date is not null and Campaign_Date > '2020-12-31'
 ORDER BY Campaign_Date DESC
