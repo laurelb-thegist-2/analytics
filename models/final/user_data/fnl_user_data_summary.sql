@@ -13,6 +13,7 @@ user_data_summary as (
         SUBSCRIBERS.Growth_Channel,
         SUBSCRIBERS.status,
         SUBSCRIBERS.referral_code,
+        SUBSCRIBERS.referral_count,
         coalesce(subscribers.Country, 'US') Country,
         coalesce(SUBSCRIBERS.Cities, 'None') Cities,
         OPEN_SEND_CLICK_SUMMARY.FIRST_SEND,
@@ -30,14 +31,8 @@ user_data_summary as (
         coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
-Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
 )
 
-select
-    Cities,
-    count(distinct email),
-    avg(UNIQUE_OPEN_RATE) UNIQUE_OPEN_RATE
+select *
 from user_data_summary
-where status = 'Active'
-Group by 1
-
