@@ -13,7 +13,7 @@ SELECT
     coalesce(Cities, 'None') Cities,
     source_brand,
     campaign_name,
-    count(EMAIL) as Churn
+    -1*(count(EMAIL)) as Churn
 FROM SUBSCRIBERS 
 WHERE date_status_changed >'2021-10-31' 
 AND date_status_changed < '2021-11-08'
