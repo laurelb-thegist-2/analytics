@@ -36,3 +36,5 @@ Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
 
 select *
 from user_data_summary
+where Growth_Channel ilike '%socialmedia-paid%' and first_send > '2021-07-31' and first_send < '2022-01-01'
+limit 100000
