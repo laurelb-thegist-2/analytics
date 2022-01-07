@@ -13,5 +13,4 @@ with campaign_clicks as (
 )
 
 select * from campaign_clicks
-where Campaign_ID = '36ae63be68f3f881fd8aaf86c4754b2e' or Campaign_ID = '976ebd461e0d7750369cf9a95731c145'
 limit 10000
