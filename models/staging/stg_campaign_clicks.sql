@@ -9,8 +9,8 @@ with campaign_clicks as (
        Region as Region_of_Click,
        URL
     from analytics.CAMPAIGN_MONITOR_EVENTS.campaign_clicks
+    where city_of_click != 'Boardman'
 )
 
 select * from campaign_clicks
-where city_of_click != 'Boardman'
-limit 10000
+
