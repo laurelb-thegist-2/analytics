@@ -5,16 +5,14 @@ with campaign_clicks_details_subs as (
 partner_clicks as (
     select 
         Campaign_Date,
-        --URL,
         Country,
+        --URL,
         count(email) total_clicks,
         count(distinct email) unique_clicks
     from campaign_clicks_details_subs
-    where City_of_Click != 'Boardman'
-    and campaign_date = '2022-01-05' 
-    and URL ilike '%ad.doubleclick%' 
-    GROUP BY 1, 2
+    where Campaign_ID = 'f7464ac18168ef72f30fbc6af76e164c'
+    and Campaign_Date = '2022-01-05'
+    GROUP BY 1,2--,3
 )
 
 SELECT * FROM partner_clicks
-limit 100000
