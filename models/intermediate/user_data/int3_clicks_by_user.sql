@@ -1,5 +1,5 @@
-with EMAIL_EVENTS as (
-    select * from {{ref('stg_email_events')}}
+with campaign_clicks as (
+    select * from {{ref('stg_campaign_clicks')}}
 ),
 
 CAMPAIGN_DETAILS as (
@@ -10,11 +10,11 @@ CLICK_SUMMARY as (
     SELECT EMAIL,
         MIN(CAMPAIGN_DATE) FIRST_CLICK,
         MAX(CAMPAIGN_DATE) MOST_RECENT_CLICK,
-        count(distinct EMAIL_EVENTS.Campaign_ID) CAMPAIGNS_CLICKED,
-        count(EMAIL_EVENTS.URL) CLICKS
-    from EMAIL_EVENTS 
+        count(distinct campaign_clicks.Campaign_ID) CAMPAIGNS_CLICKED,
+        count(campaign_clicks.URL) CLICKS
+    from campaign_clicks 
     LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID) 
-    WHERE EMAIL_EVENTS.URL is not null
+    WHERE campaign_clicks.URL is not null
     GROUP BY 1
 )
 
