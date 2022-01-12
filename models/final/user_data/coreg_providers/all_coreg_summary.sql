@@ -26,4 +26,3 @@ Group by 1,2,3,4,5,6
 
 select * from user_data_summary
 where GROWTH_CHANNEL_DBT ilike '%DVM%' and first_send < '2022-01-01'
-limit 100000

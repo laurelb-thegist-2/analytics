@@ -12,5 +12,5 @@ with campaign_clicks as (
 )
 
 select * from campaign_clicks
-where city_of_click != 'Boardman' and Campaign_ID = 'f7464ac18168ef72f30fbc6af76e164c'
+where city_of_click != 'Boardman'
 limit 10000
