@@ -22,5 +22,3 @@ sends_subscribers_unsubs as (
 select * from sends_subscribers_unsubs
 where CAMPAIGN_DATE is not null
 order by CAMPAIGN_DATE desc
-
-
