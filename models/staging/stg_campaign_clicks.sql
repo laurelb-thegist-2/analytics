@@ -13,4 +13,3 @@ with campaign_clicks as (
 )
 
 select * from campaign_clicks
-
