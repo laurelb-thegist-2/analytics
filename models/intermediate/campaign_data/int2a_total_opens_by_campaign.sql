@@ -1,18 +1,18 @@
-with CLICKS as (
-    select * from {{ref('stg_campaign_clicks')}}
+with OPENS as (
+    select * from {{ref('stg_campaign_opens')}}
 ),
 
 CAMPAIGN_DETAILS as (
     select * from {{ref('stg_campaign_details')}}
 ),
 
-clicks_by_campaign as (
+opens_by_campaign as (
     select
         Campaign_Details.NAME,
         Campaign_Details.CAMPAIGN_DATE,
-        CLICKS.*
-    from clicks
+        OPENS.*
+    from OPENS
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
 )
 
-select * from clicks_by_campaign
+select * from opens_by_campaign

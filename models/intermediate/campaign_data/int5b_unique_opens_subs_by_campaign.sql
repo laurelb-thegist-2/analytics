@@ -1,5 +1,5 @@
 with opens as (
-    select * from {{ref('int2_opens_by_campaign')}}
+    select * from {{ref('int2b_unique_opens_by_campaign')}}
 ),
 
 subscribers as (

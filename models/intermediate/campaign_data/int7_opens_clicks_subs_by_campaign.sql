@@ -1,27 +1,26 @@
-with opens_subscribers as (
-    select * from {{ref('int5_opens_subs_by_campaign')}}
+with opens as (
+    select * from {{ref('int5c_opens_subs_by_campaign')}}
 ),
 
-clicks_subscribers as (
+clicks as (
     select * from {{ref('int6_clicks_subs_by_campaign')}}
 ),
 
-opens_clicks_subscribers as (
+opens_clicks as (
     select 
-    opens_subscribers.CAMPAIGN_ID,
-    opens_subscribers.NAME,
-    opens_subscribers.CAMPAIGN_DATE,
-    opens_subscribers.COUNTRY,
-    opens_subscribers.Total_Opens,
-    opens_subscribers.Unique_Opens,
-    sum(clicks_subscribers.Total_Clicks) Total_Clicks,
-    sum(clicks_subscribers.Unique_Clicks) Unique_Clicks
-    from opens_subscribers
-    LEFT JOIN clicks_subscribers 
+    opens.CAMPAIGN_ID,
+    opens.NAME,
+    opens.CAMPAIGN_DATE,
+    opens.COUNTRY,
+    opens.Total_Opens,
+    opens.Unique_Opens,
+    clicks.Total_Clicks,
+    clicks.Unique_Clicks
+    from opens
+    LEFT JOIN clicks 
     USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY)
-    GROUP BY 1, 2, 3, 4, 5, 6
 )
 
-select * from opens_clicks_subscribers
+select * from opens_clicks
 WHERE CAMPAIGN_DATE IS NOT NULL
 ORDER BY CAMPAIGN_DATE DESC
