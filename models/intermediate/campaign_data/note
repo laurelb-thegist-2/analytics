@@ -1,0 +1,3 @@
+The queries in this folder remove boardman total and unique clicks, as well as boardman total opens. They do not remove boardman opens from unique opens. 
+
+As of 2022-01-17 boardman total opens still need to be removed from the user data queries. 
