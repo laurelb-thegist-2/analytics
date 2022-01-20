@@ -9,7 +9,7 @@ with campaign_clicks as (
        Region as Region_of_Click,
        URL
     from analytics.CAMPAIGN_MONITOR_EVENTS.campaign_clicks
-    where city_of_click != 'Boardman' or city_of_click is NULL
+    where URL is not NULL and (city_of_click != 'Boardman' or city_of_click is NULL)
 )
 
 select * from campaign_clicks

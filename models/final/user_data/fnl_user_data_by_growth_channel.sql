@@ -20,9 +20,9 @@ SELECT SUBSCRIBERS.Growth_Channel,
     coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND >'2020-12-31' 
 Group by 1,2,3,4,5,6
 )
 
 select * from user_data_by_growth_channel
-ORDER BY FIRST_SEND
+WHERE FIRST_SEND < '2022-01-01' and FIRST_SEND > '2020-12-31'
+ORDER BY 1,2,3,4,5,6

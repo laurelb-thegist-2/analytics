@@ -10,7 +10,7 @@ partner_clicks as (
         count(email) total_clicks,
         count(distinct email) unique_clicks
     from campaign_clicks_details_subs
-    where Campaign_Date = '2022-01-16' and URL ilike '%ad.doubleclick%'
+    where Campaign_Date = '2022-01-14' and URL ilike '%fanduel%'
     GROUP BY 1,2--,3
 )
 
