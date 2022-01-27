@@ -10,7 +10,8 @@ partner_clicks as (
         count(email) total_clicks,
         count(distinct email) unique_clicks
     from campaign_clicks_details_subs
-    where Campaign_Date = '2022-01-21' and URL ilike '%FANDUEL%' --OR URL ilike '%CLX%')
+    where (URL ilike '%wilson%' or URL ilike '%wilson-castaway.gif' or URL ilike '%car-oprah-winfrey%') 
+    and campaign_date = '2021-12-20'
     GROUP BY 1,2--,3
 )
 

@@ -12,11 +12,13 @@ opens_subscribers as (
         opens.Name,
         opens.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
+        coalesce(subscribers.Cities, 'None') City,
+        coalesce(subscribers.Growth_Channel, 'Organic/Unknown') Growth_Channel, 
         count(opens.email) total_opens,
         count(distinct opens.email) unique_opens
     from opens
     LEFT JOIN subscribers using (email)
-    GROUP BY 1,2,3,4
+    GROUP BY 1,2,3,4,5,6
     ORDER BY CAMPAIGN_DATE DESC
 )
 

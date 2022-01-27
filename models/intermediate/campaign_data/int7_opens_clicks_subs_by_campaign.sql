@@ -8,17 +8,19 @@ clicks as (
 
 opens_clicks as (
     select 
-    opens.CAMPAIGN_ID,
-    opens.NAME,
-    opens.CAMPAIGN_DATE,
-    opens.COUNTRY,
-    opens.Total_Opens,
-    opens.Unique_Opens,
-    clicks.Total_Clicks,
-    clicks.Unique_Clicks
+        opens.CAMPAIGN_ID,
+        opens.NAME,
+        opens.CAMPAIGN_DATE,
+        opens.COUNTRY,
+        opens.City,
+        opens.Growth_Channel,
+        opens.Total_Opens,
+        opens.Unique_Opens,
+        CASE WHEN clicks.Total_Clicks is NULL THEN 0 ELSE clicks.Total_Clicks END Total_Clicks,
+        CASE WHEN clicks.Unique_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Clicks
     from opens
-    LEFT JOIN clicks 
-    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY)
+    FULL OUTER JOIN clicks 
+    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel)
 )
 
 select * from opens_clicks

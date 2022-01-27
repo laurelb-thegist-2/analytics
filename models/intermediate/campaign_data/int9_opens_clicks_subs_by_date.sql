@@ -8,16 +8,16 @@ clicks_subscribers as (
 
 opens_clicks_subscribers as (
     select 
-    opens_subscribers.CAMPAIGN_ID,
-    opens_subscribers.NAME,
-    opens_subscribers.CAMPAIGN_DATE,
-    sum(opens_subscribers.Total_Opens) Total_Opens,
-    sum(opens_subscribers.Unique_Opens) Unique_Opens,
-    sum(clicks_subscribers.Total_Clicks) Total_Clicks,
-    sum(clicks_subscribers.Unique_Clicks) Unique_Clicks
+        opens_subscribers.CAMPAIGN_ID,
+        opens_subscribers.NAME,
+        opens_subscribers.CAMPAIGN_DATE,
+        sum(opens_subscribers.Total_Opens) Total_Opens,
+        sum(opens_subscribers.Unique_Opens) Unique_Opens,
+        sum(clicks_subscribers.Total_Clicks) Total_Clicks,
+        sum(clicks_subscribers.Unique_Clicks) Unique_Clicks
     from opens_subscribers
     LEFT JOIN clicks_subscribers 
-    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY)
+    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel)
     GROUP BY 1, 2, 3
 )
 

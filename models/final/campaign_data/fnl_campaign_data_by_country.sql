@@ -26,7 +26,7 @@ campaign_data_by_country as (
     sum(opens_clicks_subscribers.Total_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_CTOR,
     sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR
     from opens_clicks_subscribers
-    RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country)
+    RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country, City, Growth_Channel)
     GROUP BY 1,2
 )
 

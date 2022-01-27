@@ -12,11 +12,13 @@ opens as (
         total_opens.NAME,
         total_opens.CAMPAIGN_DATE,
         total_opens.COUNTRY,
+        total_opens.City,
+        total_opens.Growth_Channel, 
         total_opens.Total_Opens,
         unique_opens.Unique_Opens
     from total_opens
     LEFT JOIN unique_opens 
-    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY)
+    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel)
 )
 
 select * from opens
