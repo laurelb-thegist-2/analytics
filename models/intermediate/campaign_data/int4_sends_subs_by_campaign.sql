@@ -15,6 +15,8 @@ sends_subscribers as (
         coalesce(subscribers.Cities, 'None') City,
         coalesce(subscribers.Growth_Channel, 'Organic/Unknown') Growth_Channel, 
         count(distinct sends.email) Total_Sends,
+        count(distinct sends.Bounced_Emails) Total_Bounced, --there are duplicate emails that are bounced, but not duplicates in sends. bounces per campaing_bounces doesn't match bounces due to this. 
+        count(distinct sends.email) - count(distinct sends.Bounced_Emails) Delivered_Emails,
         count(distinct CASE WHEN sends.email ilike '%gmail%' THEN sends.email END) Gmail_Total_Sends,
         count(distinct CASE WHEN sends.email not ilike '%gmail%' or sends.email is NULL THEN sends.email END) Non_Gmail_Total_Sends
     from sends

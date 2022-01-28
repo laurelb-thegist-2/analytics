@@ -14,6 +14,8 @@ sends_subscribers_unsubs as (
         sends_subscribers.CAMPAIGN_DATE,
         CAMPAIGN_DETAILS.Total_Unsubscribes,
         sum(sends_subscribers.Total_Sends) Total_Sends,
+        sum(sends_subscribers.Total_Bounced) Total_Bounced,
+        sum(sends_subscribers.Delivered_Emails) Delivered_Emails,
         sum(sends_subscribers.Gmail_Total_Sends) Gmail_Total_Sends,
         sum(sends_subscribers.Non_Gmail_Total_Sends) Non_Gmail_Total_Sends
     from sends_subscribers
