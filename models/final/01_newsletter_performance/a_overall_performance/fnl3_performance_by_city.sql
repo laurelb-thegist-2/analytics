@@ -8,13 +8,13 @@ opens_clicks_subscribers as (
     from {{ref('int7_opens_clicks_subs_by_campaign')}}
 ),
 
-campaign_data_by_country as (
+campaign_data_by_city as (
     select 
     opens_clicks_subscribers.Campaign_Date,
     opens_clicks_subscribers.Country,
     opens_clicks_subscribers.City,
-    sum(sends_subscribers_unsubs.Total_Sends) Sends,
-    sum(sends_subscribers_unsubs.Total_Bounced) Bounces,
+    sum(sends_subscribers.Total_Sends) Sends,
+    sum(sends_subscribers.Total_Bounced) Bounces,
     sum(sends_subscribers.Delivered_Emails) Delivered,
     sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers.Delivered_Emails END) Total_Dojo_Sends,
     sum(sends_subscribers.Delivered_Emails) - sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers.Delivered_Emails END) Total_Regular_Sends,
@@ -36,6 +36,6 @@ campaign_data_by_country as (
 )
 
 select *
-from campaign_data_by_country
+from campaign_data_by_city
 WHERE Campaign_Date is not null and Campaign_Date > '2021-12-31'
-ORDER BY Campaign_Date, Country
+ORDER BY 1,2,3

@@ -12,8 +12,8 @@ campaign_data_by_country as (
     select 
     opens_clicks_subscribers.Campaign_Date,
     opens_clicks_subscribers.Country,
-    sum(sends_subscribers_unsubs.Total_Sends) Sends,
-    sum(sends_subscribers_unsubs.Total_Bounced) Bounces,
+    sum(sends_subscribers.Total_Sends) Sends,
+    sum(sends_subscribers.Total_Bounced) Bounces,
     sum(sends_subscribers.Delivered_Emails) Delivered,
     sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers.Delivered_Emails END) Total_Dojo_Sends,
     sum(sends_subscribers.Delivered_Emails) - sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers.Delivered_Emails END) Total_Regular_Sends,
@@ -37,4 +37,4 @@ campaign_data_by_country as (
 select *
 from campaign_data_by_country
 WHERE Campaign_Date is not null and Campaign_Date > '2021-12-31'
-ORDER BY Campaign_Date, Country
+ORDER BY 1,2

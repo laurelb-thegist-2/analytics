@@ -1,6 +1,4 @@
-with
-
-SUBSCRIBERS as (
+with SUBSCRIBERS as (
     select * from {{ref('stg_subscribers')}}
 ),
 
