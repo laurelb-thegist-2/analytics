@@ -15,6 +15,8 @@ opens_clicks as (
         opens.City,
         opens.Growth_Channel,
         opens.Total_Opens,
+        opens.Gmail_Total_Opens,
+        opens.Non_Gmail_Total_Opens,
         opens.Unique_Opens,
         CASE WHEN clicks.Total_Clicks is NULL THEN 0 ELSE clicks.Total_Clicks END Total_Clicks,
         CASE WHEN clicks.Unique_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Clicks

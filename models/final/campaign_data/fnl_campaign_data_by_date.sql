@@ -15,6 +15,8 @@ campaign_data_by_date as (
     sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers_unsubs.Total_Sends END) Total_Dojo_Sends,
     sum(sends_subscribers_unsubs.Total_Sends) - sum(CASE WHEN opens_clicks_subscribers.Name ILIKE '%DOJO%' THEN sends_subscribers_unsubs.Total_Sends END) Total_Regular_Sends,
     sum(opens_clicks_subscribers.Total_Opens) Total_Opens,
+    sum(opens_clicks_subscribers.Gmail_Total_Opens) Gmail_Total_Opens,
+    sum(opens_clicks_subscribers.Non_Gmail_Total_Opens) Non_Gmail_Total_Opens,
     sum(opens_clicks_subscribers.Unique_Opens) Unique_Opens,
     sum(opens_clicks_subscribers.Total_Opens) / sum(sends_subscribers_unsubs.Total_Sends) Total_Open_Rate,
     sum(opens_clicks_subscribers.Unique_Opens) / sum(sends_subscribers_unsubs.Total_Sends) Unique_Open_Rate,

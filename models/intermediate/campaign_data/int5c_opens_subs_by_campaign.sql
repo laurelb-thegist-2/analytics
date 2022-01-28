@@ -15,6 +15,8 @@ opens as (
         total_opens.City,
         total_opens.Growth_Channel, 
         total_opens.Total_Opens,
+        total_opens.Gmail_Total_Opens,
+        total_opens.Non_Gmail_Total_Opens,
         unique_opens.Unique_Opens
     from total_opens
     LEFT JOIN unique_opens 

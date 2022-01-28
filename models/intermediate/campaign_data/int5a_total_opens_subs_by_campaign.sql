@@ -14,7 +14,9 @@ opens_subscribers as (
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
         coalesce(subscribers.Growth_Channel, 'Organic/Unknown') Growth_Channel, 
-        count(opens.email) total_opens
+        count(opens.email) total_opens,
+        count(CASE WHEN opens.email ilike '%gmail%' THEN opens.email END) Gmail_Total_Opens,
+        count(CASE WHEN opens.email not ilike '%gmail%' THEN opens.email END) Non_Gmail_Total_Opens
     from opens
     LEFT JOIN subscribers using (email)
     GROUP BY 1,2,3,4,5,6

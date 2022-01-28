@@ -12,6 +12,8 @@ opens_clicks_subscribers as (
         opens_subscribers.NAME,
         opens_subscribers.CAMPAIGN_DATE,
         sum(opens_subscribers.Total_Opens) Total_Opens,
+        sum(opens_subscribers.Gmail_Total_Opens) Gmail_Total_Opens,
+        sum(opens_subscribers.Non_Gmail_Total_Opens) Non_Gmail_Total_Opens,
         sum(opens_subscribers.Unique_Opens) Unique_Opens,
         sum(clicks_subscribers.Total_Clicks) Total_Clicks,
         sum(clicks_subscribers.Unique_Clicks) Unique_Clicks

@@ -14,7 +14,9 @@ sends_subscribers as (
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
         coalesce(subscribers.Growth_Channel, 'Organic/Unknown') Growth_Channel, 
-        count(distinct sends.email) Total_Sends
+        count(distinct sends.email) Total_Sends,
+        count(distinct CASE WHEN sends.email ilike '%gmail%' THEN sends.email END) Gmail_Total_Sends,
+        count(distinct CASE WHEN sends.email not ilike '%gmail%' or sends.email is NULL THEN sends.email END) Non_Gmail_Total_Sends
     from sends
     LEFT JOIN subscribers using (email)
     GROUP BY 1, 2, 3, 4, 5, 6
