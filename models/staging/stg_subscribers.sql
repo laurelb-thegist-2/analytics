@@ -5,7 +5,7 @@ with subscribers as (
         LISTID as list_ID,
         cast("DATE" as DATE) date_status_changed,
         STATUS,
-        GROWTHCHANNEL as Growth_Channel,
+        coalesce(GROWTHCHANNEL, 'Organic/Unknown') as Growth_Channel,
         COUNTRY as country,
         CITIES,
         REFERRALCODE as referral_code,
