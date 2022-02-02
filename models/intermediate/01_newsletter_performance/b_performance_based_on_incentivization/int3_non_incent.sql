@@ -6,7 +6,7 @@ non_incent as (
     select
         Campaign_Date,
         Country,
-        City,
+        --City,
         CASE WHEN Growth_Channel not ilike '%coreg%' and Growth_Channel not ilike '%contest%' THEN 'Non-Incentivized' END Incentivization,
         sum(Delivered) Delivered,
         sum(Total_Opens) Total_Opens,
@@ -17,7 +17,8 @@ non_incent as (
         sum(Total_Clicks) / sum(Total_Opens) Total_CTOR
     from campaign_data
     where Growth_Channel not ilike '%coreg%' and Growth_Channel not ilike '%contest%'
-    GROUP BY 1,2,3,4
+    GROUP BY 1,2,3
+    ORDER BY 1,2
 )
 
 select * from non_incent 

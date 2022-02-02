@@ -5,7 +5,7 @@ with campaign_data as (
 incent as (
     select
         Campaign_Date,
-        Country,
+        --Country,
         --City,
         CASE WHEN Growth_Channel ilike '%coreg%' or Growth_Channel ilike '%contest%' THEN 'Incentivized' END Incentivization,
         sum(Delivered) Delivered,
@@ -17,8 +17,9 @@ incent as (
         sum(Total_Clicks) / sum(Total_Opens) Total_CTOR
     from campaign_data
     where Growth_Channel ilike '%coreg%' or Growth_Channel ilike '%contest%'
-    GROUP BY 1,2,3
-    ORDER BY 1,2
+    GROUP BY 1,2
+    ORDER BY 1
 )
 
 select * from incent 
+where campaign_date > '2021-12-31'

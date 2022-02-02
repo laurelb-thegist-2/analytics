@@ -6,10 +6,9 @@ non_incent as (
     select * from {{ref('int3_non_incent')}}
 ),
 
-incentivization_by_country as (
+incentivization_by_date as (
     select
         Campaign_Date,
-        Country,
         Incentivization,
         sum(Delivered) Delivered,
         sum(Total_Opens) Total_Opens,
@@ -19,9 +18,9 @@ incentivization_by_country as (
         sum(Unique_Clicks) Unique_Clicks,
         sum(Total_Clicks) / sum(Total_Opens) Total_CTOR
     from incent
-    FULL OUTER JOIN non_incent using (Campaign_Date, Country, City, Incentivization)
-    GROUP BY 1,2,3
+    FULL OUTER JOIN non_incent using (Campaign_Date, Country, Incentivization)
+    GROUP BY 1, 2
 )
 
-select * from incentivization_by_country
+select * from incentivization_by_date
 WHERE campaign_date > '2021-12-31'
