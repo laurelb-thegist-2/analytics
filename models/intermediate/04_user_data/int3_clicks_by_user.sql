@@ -11,7 +11,7 @@ CLICK_SUMMARY as (
         MIN(CAMPAIGN_DATE) FIRST_CLICK,
         MAX(CAMPAIGN_DATE) MOST_RECENT_CLICK,
         count(distinct campaign_clicks.Campaign_ID) CAMPAIGNS_CLICKED,
-        count(campaign_clicks.URL) CLICKS
+        count(campaign_clicks.URL) TOTAL_CLICKS
     from campaign_clicks 
     LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID) 
     WHERE campaign_clicks.URL is not null
