@@ -17,6 +17,7 @@ opens as (
         total_opens.Campaign_Date,
         total_opens.Name,
         MIN(total_opens.Timestamp) First_Open,
+        MAX(total_opens.Timestamp) Most_Recent_Open,
         Count(total_opens.email) Total_Opens,
         count(distinct unique_opens.email) Unique_Opens
     from total_opens

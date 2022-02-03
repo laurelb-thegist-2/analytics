@@ -7,7 +7,8 @@ CAMPAIGN_DETAILS as (
 ),
 
 CLICK_SUMMARY as (
-    SELECT EMAIL,
+    SELECT 
+        EMAIL,
         MIN(CAMPAIGN_DATE) FIRST_CLICK,
         MAX(CAMPAIGN_DATE) MOST_RECENT_CLICK,
         count(distinct campaign_clicks.Campaign_ID) CAMPAIGNS_CLICKED,

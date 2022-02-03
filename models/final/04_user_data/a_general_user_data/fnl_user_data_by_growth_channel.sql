@@ -31,3 +31,5 @@ Group by 1,2,3,4,5,6
 select * from user_data_by_growth_channel
 WHERE FIRST_SEND > '2021-12-31'
 ORDER BY 1,2,3,4,5,6
+limit 1000000
+

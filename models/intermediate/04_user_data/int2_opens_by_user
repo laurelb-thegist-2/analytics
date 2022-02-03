@@ -19,7 +19,7 @@ OPEN_SUMMARY as (
         count(distinct EMAIL_EVENTS.Campaign_ID) UNIQUE_OPENS
     from EMAIL_EVENTS 
 LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
-LEFT JOIN OPENS using (Campaign_ID)
+LEFT JOIN OPENS using (Campaign_ID, Email)
 GROUP BY 1
 )
 
