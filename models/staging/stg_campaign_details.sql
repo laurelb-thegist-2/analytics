@@ -1,3 +1,5 @@
+-- won't run for me in dbt on 2022-02-04, won't run consistently in snowflake (ran once, but then stopped working again). all other queries running for me in dbt, but email_events and email_sends aren't running in snowflake.
+
 with campaign_details as ( 
     select 
        CAMPAIGNID AS Campaign_ID,

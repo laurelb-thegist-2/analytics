@@ -6,7 +6,7 @@ incent as (
     select
         Campaign_Date,
         Country,
-        --City,
+        City,
         CASE WHEN Growth_Channel ilike '%coreg%' or Growth_Channel ilike '%contest%' THEN 'Incentivized' END Incentivization,
         sum(Delivered) Delivered,
         sum(Total_Opens) Total_Opens,
@@ -17,7 +17,7 @@ incent as (
         sum(Total_Clicks) / sum(Total_Opens) Total_CTOR
     from campaign_data
     where Growth_Channel ilike '%coreg%' or Growth_Channel ilike '%contest%'
-    GROUP BY 1,2,3
+    GROUP BY 1,2,3,4
     ORDER BY 1,2
 )
 
