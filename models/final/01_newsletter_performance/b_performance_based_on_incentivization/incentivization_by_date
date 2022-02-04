@@ -18,7 +18,7 @@ incentivization_by_date as (
         sum(Unique_Clicks) Unique_Clicks,
         sum(Total_Clicks) / sum(Total_Opens) Total_CTOR
     from incent
-    FULL OUTER JOIN non_incent using (Campaign_Date, Country, Incentivization)
+    FULL OUTER JOIN non_incent using (Campaign_Date)
     GROUP BY 1, 2
 )
 

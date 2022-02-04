@@ -1,5 +1,5 @@
 with opens as (
-    select * from {{ref('int5c_opens_subs_by_campaign')}}
+    select * from {{ref('int5_opens_subs_by_campaign')}}
 ),
 
 clicks as (

@@ -2,28 +2,24 @@
 -- int2a combines campaign_opens with campaign_details and filters out boardman opens from the total opens
 -- int2b combines email_events with campaign_details and does not filter out boardman opens from unique opens
 
-with total_opens as (
-    select * from {{ref('int2a_total_opens_by_campaign')}}
+with opens as (
+    select * from {{ref('int2_opens_by_campaign')}}
 ),
 
-unique_opens as (
-    select * from {{ref('int2b_unique_opens_by_campaign')}}
-),
 
-opens as (
+opens_by_user as (
     select 
-        total_opens.Email,
-        total_opens.Campaign_ID,
-        total_opens.Campaign_Date,
-        total_opens.Name,
-        MIN(total_opens.Timestamp) First_Open,
-        MAX(total_opens.Timestamp) Most_Recent_Open,
-        Count(total_opens.email) Total_Opens,
-        count(distinct unique_opens.email) Unique_Opens
-    from total_opens
-    LEFT JOIN unique_opens using (Campaign_ID, Campaign_Date, Email, Name)
+        Email,
+        Campaign_ID,
+        Campaign_Date,
+        Name,
+        MIN(Timestamp) First_Open,
+        MAX(Timestamp) Most_Recent_Open,
+        count(CASE WHEN City_of_Open != 'Boardman' or city_of_open is NULL THEN email END) Total_Opens,
+        count(distinct email) Unique_Opens
+    from opens
     GROUP BY 1, 2, 3, 4
 )
 
-select * from opens
+select * from opens_by_user
 
