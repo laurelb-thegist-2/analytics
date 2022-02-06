@@ -17,4 +17,4 @@ all_newsletters as (
 )
 
 select * from all_newsletters 
-ORDER BY 1
+ORDER BY 1,2,4,3
