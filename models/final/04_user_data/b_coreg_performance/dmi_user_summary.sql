@@ -23,5 +23,5 @@ Group by 1,2,3,4
 )
 
 select * from user_data_summary
-where Growth_Channel ilike '%dmipartners%' and first_send < '2022-01-29'
+where Growth_Channel ilike '%dmipartners%' and first_send < '2022-02-05'
 limit 10000

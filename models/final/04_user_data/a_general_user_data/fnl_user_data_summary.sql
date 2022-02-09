@@ -24,11 +24,14 @@ user_data_summary as (
         OPEN_SEND_CLICK_SUMMARY.FIRST_CLICK,
         OPEN_SEND_CLICK_SUMMARY.MOST_RECENT_CLICK,
         SUBSCRIBERS.date_status_changed,
-        coalesce(sum(total_sends), 0) as SENDS,
-        coalesce(sum(unique_opens), 0) as UNIQUE_OPENS,
-        coalesce(sum(total_clicks), 0) as TOTAL_CLICKS,
-        coalesce(sum(unique_opens)/sum(total_sends), 0) as UNIQUE_OPEN_RATE,
-        coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
+        sum(total_sends) as SENDS,
+        sum(total_bounced) as BOUNCED,
+        sum(delivered) as DEVLIERED,
+        sum(unique_opens) as UNIQUE_OPENS,
+        sum(total_opens) as TOTAL_OPENS,
+        sum(total_clicks) as TOTAL_CLICKS,
+        sum(unique_opens)/sum(delivered) as UNIQUE_OPEN_RATE,
+        CASE WHEN sum(total_opens) > 0 THEN sum(total_clicks)/sum(total_opens) ELSE 0 END TOTAL_CTOR
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
 Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
@@ -36,5 +39,5 @@ Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
 
 select *
 from user_data_summary
-where first_send < '2022-01-05' and unique_opens = 0 and status = 'Active'
-order by first_send desc 
+order by EMAIL desc 
+limit 100000
