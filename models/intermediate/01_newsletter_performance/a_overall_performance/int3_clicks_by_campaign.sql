@@ -11,8 +11,8 @@ clicks_by_campaign as (
         Campaign_Details.NAME,
         Campaign_Details.CAMPAIGN_DATE,
         CLICKS.*
-    from clicks
-LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
+    from CAMPAIGN_DETAILS
+LEFT JOIN clicks using (Campaign_ID)
 )
 
 select * from clicks_by_campaign

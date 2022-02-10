@@ -17,8 +17,8 @@ sends as (
         NAME,
         EMAIL_SENDS.email,
         Campaign_Bounces.email Bounced_Emails
-    from email_sends 
-LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
+    from CAMPAIGN_DETAILS
+LEFT JOIN EMAIL_SENDS using (Campaign_ID)
 LEFT JOIN Campaign_Bounces using (Campaign_ID, Email)
 )
 

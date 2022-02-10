@@ -11,8 +11,8 @@ opens_by_campaign as (
         Campaign_Details.NAME,
         Campaign_Details.CAMPAIGN_DATE,
         OPENS.*
-    from OPENS
-LEFT JOIN CAMPAIGN_DETAILS using (Campaign_ID)
+    from CAMPAIGN_DETAILS
+LEFT JOIN OPENS using (Campaign_ID)
 )
 
 select * from opens_by_campaign
