@@ -30,7 +30,7 @@ user_data_summary as (
         sum(unique_opens) as UNIQUE_OPENS,
         sum(total_opens) as TOTAL_OPENS,
         sum(total_clicks) as TOTAL_CLICKS,
-        sum(unique_opens)/sum(delivered) as UNIQUE_OPEN_RATE,
+        CASE WHEN sum(delivered) > 0 THEN sum(unique_opens)/sum(delivered) ELSE 0 END as UNIQUE_OPEN_RATE,
         CASE WHEN sum(total_opens) > 0 THEN sum(total_clicks)/sum(total_opens) ELSE 0 END TOTAL_CTOR
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 

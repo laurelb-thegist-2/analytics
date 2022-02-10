@@ -1,7 +1,7 @@
 with email_sends as (
     select 
         CampaignID as Campaign_ID,
-        Email
+        lower(Email) Email
     from analytics.core.email_sends
 )
 

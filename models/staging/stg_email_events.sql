@@ -1,6 +1,6 @@
 with email_events as (
     select 
-        Email,
+        lower(Email) Email,
         CampaignID as Campaign_ID, 
         Action,
         Timestamp,

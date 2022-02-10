@@ -5,7 +5,7 @@ with campaign_opens as (
        CountryCode as Country_Code_of_Open,
        CountryName as Country_of_Open,
        Date as timestamp,
-       EmailAddress as Email,
+       lower(EmailAddress) as Email,
        Region as Region_of_Open,
        LISTID as List_ID
     from analytics.CAMPAIGN_MONITOR_EVENTS.campaign_opens

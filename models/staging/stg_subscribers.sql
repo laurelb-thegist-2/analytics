@@ -1,6 +1,6 @@
 with subscribers as ( 
     select 
-        EMAILADDRESS AS EMAIL,
+        lower(EMAILADDRESS) AS EMAIL,
         LEADID,
         LISTID as list_ID,
         cast("DATE" as DATE) date_status_changed,

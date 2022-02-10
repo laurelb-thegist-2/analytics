@@ -5,7 +5,7 @@ with campaign_clicks as (
        CountryCode as Country_Code_of_Click,
        CountryName as Country_of_Click,
        Date as timestamp,
-       EmailAddress as Email,
+       lower(EmailAddress) as Email,
        Region as Region_of_Click,
        LISTID as List_ID,
        URL
