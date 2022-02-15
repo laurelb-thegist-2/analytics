@@ -11,7 +11,7 @@ opens_clicks_subscribers as (
 campaign_data_by_date as (
     select 
     opens_clicks_subscribers.Campaign_Date,
-    CASE WHEN NAME not ilike '%pop-up%' THEN 'Regular' END Newsletter_Type,
+    CASE WHEN NAME not ilike '%pop-up%' and NAME not ilike '%olympics%' THEN 'Regular' END Newsletter_Type,
     sum(sends_subscribers_unsubs.Total_Sends) Sends,
     sum(sends_subscribers_unsubs.Total_Bounced) Bounces,
     sum(sends_subscribers_unsubs.Delivered_Emails) Delivered,
@@ -34,7 +34,7 @@ campaign_data_by_date as (
     SUM(sends_subscribers_unsubs.total_unsubscribes) / sum(opens_clicks_subscribers.Unique_Opens) Unsubscribe_per_Open
     from sends_subscribers_unsubs 
     LEFT JOIN opens_clicks_subscribers using (Campaign_ID, Name, Campaign_Date)
-    WHERE NAME not ilike '%pop-up%'
+    WHERE NAME not ilike '%pop-up%' and NAME not ilike '%olympics%'
     GROUP BY 1,2
 )
 

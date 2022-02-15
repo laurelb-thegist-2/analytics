@@ -12,7 +12,7 @@ campaign_data_by_country as (
     select 
     opens_clicks_subscribers.Campaign_Date,
     opens_clicks_subscribers.Country,
-    CASE WHEN NAME not ilike '%pop-up%' THEN 'Regular' END Newsletter_Type,
+    CASE WHEN NAME not ilike '%pop-up%' and NAME not ilike '%olympics%' THEN 'Regular' END Newsletter_Type,
     sum(sends_subscribers.Total_Sends) Sends,
     sum(sends_subscribers.Total_Bounced) Bounces,
     sum(sends_subscribers.Delivered_Emails) Delivered,
@@ -32,7 +32,7 @@ campaign_data_by_country as (
     sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR
     from opens_clicks_subscribers
     RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country, City, Growth_Channel)
-    WHERE NAME not ILIKE '%pop-up%'
+    WHERE NAME not ilike '%pop-up%' and NAME not ilike '%olympics%'
     GROUP BY 1,2,3
 )
 
