@@ -1,5 +1,5 @@
 with subscribers as (
-    select * from {{ref('int6_subscribers')}}
+    select * from {{ref('int6_subs_churn_type')}}
 ),
 
 incentivized as (
