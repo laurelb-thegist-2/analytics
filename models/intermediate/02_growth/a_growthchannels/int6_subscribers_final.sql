@@ -17,6 +17,7 @@ final_subscribers as (
         Growth_Channel,
         Growth_Int_Bucket,
         Growth_Bucket,
+        Incentivization,
         Country,
         CITIES,
         referral_code,

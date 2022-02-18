@@ -6,6 +6,7 @@ with subscribers as (
         cast("DATE" as DATE) date_status_changed,
         STATUS,
         coalesce(GROWTHCHANNEL, 'Organic/Unknown') as Growth_Channel,
+        CASE WHEN Growth_Channel ilike '%dojo%' or Growth_Channel ilike '%contest%' THEN 'Incentivized' ELSE 'Unincentivized' END Incentivization,
         COUNTRY as country,
         CITIES,
         REFERRALCODE as referral_code,

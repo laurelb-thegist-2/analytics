@@ -2,8 +2,8 @@ with subscribers as (
     select * from {{ref('stg_subscribers')}}
 ),
 
-growth_channels as (
-    select * from {{ref('int3_growth_channels')}}
+growth_bucket as (
+    select * from {{ref('int3_growth_bucket')}}
 ),
 
 final_subscribers as (
@@ -14,8 +14,9 @@ final_subscribers as (
         date_status_changed,
         STATUS,
         Growth_Channel,
-        growth_channels.Growth_Int_Bucket,
-        growth_channels.Growth_Bucket,
+        growth_bucket.Growth_Int_Bucket,
+        growth_bucket.Growth_Bucket,
+        Incentivization,
         Country,
         CITIES,
         referral_code,
@@ -23,7 +24,7 @@ final_subscribers as (
         campaign_name,
         source_brand
     from subscribers
-    LEFT JOIN growth_channels using (EMAIL)
+    LEFT JOIN growth_bucket using (EMAIL)
 )
 
 select * from final_subscribers
