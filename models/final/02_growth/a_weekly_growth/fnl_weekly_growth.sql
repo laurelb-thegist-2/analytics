@@ -3,13 +3,15 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_subs_growth_channel')}}
 ),
 
 new_subs_by_growth_channel as (
 SELECT 
     FIRST_SEND Date,
     SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
+    subscribers.Growth_Int_Bucket,
+    subscribers.Growth_Bucket,
     subscribers.Status,
     coalesce(subscribers.Country, 'US') Country,
     coalesce(subscribers.Cities, 'None') Cities,
@@ -20,7 +22,7 @@ FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND > '2022-02-06' 
 AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < '2022-02-14'
-Group by 1,2,3,4,5,6,7
+Group by 1,2,3,4,5,6,7,8,9
 ORDER BY 1 DESC
 )
 

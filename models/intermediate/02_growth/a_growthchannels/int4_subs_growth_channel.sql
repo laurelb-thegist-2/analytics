@@ -27,5 +27,3 @@ final_subscribers as (
 )
 
 select * from final_subscribers
-where status = 'Active'
-limit 400000
