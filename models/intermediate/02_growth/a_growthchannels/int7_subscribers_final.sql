@@ -1,3 +1,7 @@
+-- final table has all subscribers with their growth channel, their shortened and highest level growth channels, their 
+-- churn type (e.g., voluntary, non-voluntary and bounced) and their incent type (e.g., incent vs unincent)
+-- this is the final subscriber query that should be used in all other queries 
+
 with subscribers as (
     select * from {{ref('int6_subs_churn_type')}}
 ),
@@ -46,10 +50,10 @@ unincentivized as (
     WHERE Growth_Bucket not ilike '%dojo%' and Growth_Bucket not ilike '%contest%' or Growth_Bucket IS null
 ), 
 
-incentivization as (
+final_subscribers as (
     select * from incentivized
     union
     select * from unincentivized
 )
 
-select * from incentivized
+select * from final_subscribers
