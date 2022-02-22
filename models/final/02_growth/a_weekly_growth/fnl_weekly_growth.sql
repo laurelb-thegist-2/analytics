@@ -3,7 +3,7 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('int4_subs_growth_channel')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 new_subs_by_growth_channel as (
@@ -12,6 +12,7 @@ SELECT
     SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
     subscribers.Growth_Int_Bucket,
     subscribers.Growth_Bucket,
+    subscribers.Incentivization,
     subscribers.Status,
     coalesce(subscribers.Country, 'US') Country,
     coalesce(subscribers.Cities, 'None') Cities,
@@ -20,9 +21,9 @@ SELECT
     count(SUBSCRIBERS.EMAIL) as GROWTH
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND > '2022-02-06' 
-AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < '2022-02-14'
-Group by 1,2,3,4,5,6,7,8,9
+WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND > '2022-02-13' 
+AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < '2022-02-21'
+Group by 1,2,3,4,5,6,7,8,9,10
 ORDER BY 1 DESC
 )
 

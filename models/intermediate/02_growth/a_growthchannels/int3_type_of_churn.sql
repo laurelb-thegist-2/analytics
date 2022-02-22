@@ -1,5 +1,5 @@
 with subscribers as (
-    select * from {{ref('int4_subs_growth_channel')}}
+    select * from {{ref('stg_subscribers')}}
 ),
 
 voluntary as (
@@ -11,8 +11,6 @@ voluntary as (
         status,
         CASE WHEN status ILIKE '%Unsubscribed%' THEN 'Voluntary' END Type_of_Churn,
         Growth_Channel,
-        Growth_Int_Bucket,
-        Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -33,8 +31,6 @@ non_voluntary as (
         status,
         CASE WHEN status ILIKE '%Deleted%' THEN 'Non-voluntary' END Type_of_Churn,
         Growth_Channel,
-        Growth_Int_Bucket,
-        Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -55,8 +51,6 @@ bounced as (
         status,
         CASE WHEN status ILIKE '%Bounced%' THEN 'Bounced' END Type_of_Churn,
         Growth_Channel,
-        Growth_Int_Bucket,
-        Growth_Bucket,
         Incentivization,
         Country,
         CITIES,

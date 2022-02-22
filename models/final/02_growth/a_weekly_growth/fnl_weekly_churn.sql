@@ -1,5 +1,5 @@
 with SUBSCRIBERS as (
-    select * from {{ref('int4_subs_growth_channel')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 lost_subscribers as (
@@ -8,6 +8,8 @@ SELECT
     Growth_Channel,
     Growth_Int_Bucket,
     Growth_Bucket,
+    Incentivization,
+    Type_of_Churn,
     status,
     coalesce(Country, 'US') Country,
     coalesce(Cities, 'None') Cities,
@@ -18,7 +20,7 @@ FROM SUBSCRIBERS
 WHERE date_status_changed > '2022-02-06' 
 AND date_status_changed < '2022-02-14'
 AND status <> 'Active'
-Group by 1,2,3,4,5,6,7,8,9
+Group by 1,2,3,4,5,6,7,8,9,10,11
 ORDER BY 1 DESC
 )
 

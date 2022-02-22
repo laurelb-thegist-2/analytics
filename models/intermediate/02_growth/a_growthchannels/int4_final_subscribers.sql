@@ -6,7 +6,15 @@ growth_int_bucket as (
     select * from {{ref('int1_growth_int_bucket')}}
 ),
 
-subs_growth_int_bucket as (
+growth_bucket as (
+    select * from {{ref('int2_growth_bucket')}}
+),
+
+churn_type as (
+    select * from {{ref('int3_type_of_churn')}}
+),
+
+final_subscribers as (
     select 
         EMAIL,
         LEADID,
@@ -15,6 +23,8 @@ subs_growth_int_bucket as (
         STATUS,
         Growth_Channel,
         growth_int_bucket.Growth_Int_Bucket,
+        growth_bucket.Growth_Bucket,
+        churn_type.Type_of_Churn,
         Incentivization,
         Country,
         CITIES,
@@ -24,6 +34,8 @@ subs_growth_int_bucket as (
         source_brand
     from subscribers
     LEFT JOIN growth_int_bucket using (EMAIL)
+    LEFT JOIN growth_bucket using (EMAIL)
+    LEFT JOIN churn_type using (EMAIL)
 )
 
-select * from subs_growth_int_bucket
+select * from final_subscribers
