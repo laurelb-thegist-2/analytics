@@ -3,7 +3,7 @@ with clicks as (
 ),
 
 subscribers as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 clicks_subscribers as (
@@ -13,12 +13,14 @@ clicks_subscribers as (
         clicks.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
-        coalesce(subscribers.Growth_Channel,'Organic/Unknown') Growth_Channel,
+        Growth_Channel, 
+        Growth_Bucket,
+        Incentivization,
         count(clicks.email) total_clicks,
         count(distinct clicks.email) unique_clicks
     from clicks
     LEFT JOIN subscribers using (email)
-    GROUP BY 1,2,3,4,5,6
+    GROUP BY 1,2,3,4,5,6,7,8
     ORDER BY CAMPAIGN_DATE DESC
 )
 

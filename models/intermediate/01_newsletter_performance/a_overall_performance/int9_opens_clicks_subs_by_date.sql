@@ -19,7 +19,7 @@ opens_clicks_subscribers as (
         sum(clicks_subscribers.Unique_Clicks) Unique_Clicks
     from opens_subscribers
     LEFT JOIN clicks_subscribers 
-    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel)
+    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel, Growth_Bucket, Incentivization)
     GROUP BY 1, 2, 3
 )
 

@@ -14,6 +14,8 @@ opens_clicks as (
         opens.COUNTRY,
         opens.City,
         opens.Growth_Channel,
+        opens.Growth_Bucket,
+        opens.Incentivization,
         opens.Total_Opens,
         opens.Gmail_Total_Opens,
         opens.Non_Gmail_Total_Opens,
@@ -22,7 +24,7 @@ opens_clicks as (
         CASE WHEN clicks.Unique_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Clicks
     from opens
     FULL OUTER JOIN clicks 
-    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel)
+    USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel, Growth_Bucket, Incentivization)
 )
 
 select * from opens_clicks

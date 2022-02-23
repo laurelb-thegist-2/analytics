@@ -3,7 +3,7 @@ with sends as (
 ),
 
 subscribers as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 sends_subscribers as (
@@ -13,7 +13,9 @@ sends_subscribers as (
         sends.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
-        coalesce(subscribers.Growth_Channel, 'Organic/Unknown') Growth_Channel, 
+        Growth_Channel, 
+        Growth_Bucket,
+        Incentivization,
         count(distinct sends.email) Total_Sends,
         count(distinct sends.Bounced_Emails) Total_Bounced, --there are duplicate emails that are bounced, but not duplicates in sends. bounces per campaing_bounces doesn't match bounces due to this. 
         count(distinct sends.email) - count(distinct sends.Bounced_Emails) Delivered_Emails,
@@ -21,7 +23,7 @@ sends_subscribers as (
         count(distinct CASE WHEN sends.email not ilike '%gmail%' or sends.email is NULL THEN sends.email END) Non_Gmail_Total_Sends
     from sends
     LEFT JOIN subscribers using (email)
-    GROUP BY 1, 2, 3, 4, 5, 6
+    GROUP BY 1, 2, 3, 4, 5, 6, 7, 8
     ORDER BY CAMPAIGN_DATE
 )
 
