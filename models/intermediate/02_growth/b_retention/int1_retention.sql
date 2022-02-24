@@ -5,7 +5,7 @@ with sends as (
 ),
 
 subscribers as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 retention as (

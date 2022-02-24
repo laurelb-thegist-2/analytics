@@ -1,4 +1,6 @@
--- pulls from int2_opens_by_campaign and int2b_unique_opens_by_campaign (found under folder campaign_data), which combines campaign_opens with campaign_details and filters out boardman opens from the total opens
+-- pulls from int2_opens_by_campaign (intermediate -> 01_newsletter_performance -> a_overall_performance), 
+-- which combines campaign_opens with campaign_details
+-- boardman opens are filtered out from this query for total opens, but not unique opens
 
 with opens as (
     select * from {{ref('int2_opens_by_campaign')}}

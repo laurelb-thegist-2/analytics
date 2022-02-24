@@ -13,9 +13,9 @@ clicks_subscribers as (
         clicks.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
-        Growth_Channel, 
-        Growth_Bucket,
-        Incentivization,
+        coalesce(Growth_Channel, 'Organic/Unknown') Growth_Channel, 
+        coalesce(Growth_Bucket, 'Organic/Unknown') Growth_Bucket,
+        coalesce(Incentivization, 'Unincentivized') Incentivization,
         count(clicks.email) total_clicks,
         count(distinct clicks.email) unique_clicks
     from clicks

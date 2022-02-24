@@ -1,3 +1,6 @@
+-- boardman opens aren't filtered at this level of query. 
+-- to get total opens (w/o boradman) and unique opens (w boardman) we need to filter out at a higher level.
+
 with campaign_opens as ( 
     select 
        CAMPAIGNID AS Campaign_ID,

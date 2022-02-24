@@ -13,9 +13,9 @@ sends_subscribers as (
         sends.CAMPAIGN_DATE,
         coalesce(subscribers.Country, 'US') Country,
         coalesce(subscribers.Cities, 'None') City,
-        Growth_Channel, 
-        Growth_Bucket,
-        Incentivization,
+        coalesce(Growth_Channel, 'Organic/Unknown') Growth_Channel, 
+        coalesce(Growth_Bucket, 'Organic/Unknown') Growth_Bucket,
+        coalesce(Incentivization, 'Unincentivized') Incentivization,
         count(distinct sends.email) Total_Sends,
         count(distinct sends.Bounced_Emails) Total_Bounced, --there are duplicate emails that are bounced, but not duplicates in sends. bounces per campaing_bounces doesn't match bounces due to this. 
         count(distinct sends.email) - count(distinct sends.Bounced_Emails) Delivered_Emails,
