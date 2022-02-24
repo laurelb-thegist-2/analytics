@@ -3,7 +3,7 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 user_data_summary as (
