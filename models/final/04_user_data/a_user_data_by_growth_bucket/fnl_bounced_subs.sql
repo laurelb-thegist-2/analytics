@@ -11,9 +11,9 @@ SELECT
     SUBSCRIBERS.Growth_Bucket,
     SUBSCRIBERS.Incentivization,
     count(Email) Bounced_Volume,
-    sum(unique_opens)/sum(delivered) Bounced_UNIQUE_OPEN_RATE,
-    sum(total_clicks)/sum(delivered) Bounced_CLICK_RATE,
-    sum(total_clicks)/sum(total_opens) Bounced_TOTAL_CTOR
+    CASE WHEN sum(delivered) > 0 THEN sum(unique_opens)/sum(delivered) ELSE 0 END Bounced_UNIQUE_OPEN_RATE,
+    CASE WHEN sum(delivered) > 0 THEN sum(total_clicks)/sum(delivered) ELSE 0 END Bounced_CLICK_RATE,
+    CASE WHEN sum(total_opens) > 0 THEN sum(total_clicks)/sum(total_opens) ELSE 0 END Bounced_TOTAL_CTOR
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND > '2021-12-31' and Status = 'Bounced'

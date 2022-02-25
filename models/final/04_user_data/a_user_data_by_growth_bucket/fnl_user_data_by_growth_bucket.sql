@@ -26,19 +26,19 @@ all_subs as (
         Unsubs.Unsubs_Unique_Open_Rate,
         Unsubs.Unsubs_Click_Rate,
         Unsubs.Unsubs_Total_CTOR,
-        coalesce(Deleted.Deleted_Volume, 0) as Deleted_Volume,
-        Deleted.Deleted_Unique_Open_Rate,
-        Deleted.Deleted_Click_Rate,
-        Deleted.Deleted_Total_CTOR,
-        coalesce(Bounced.Bounced_Volume, 0) as Bounced_Volume,
-        Bounced.Bounced_Unique_Open_Rate,
-        Bounced.Bounced_Click_Rate,
-        Bounced.Bounced_Total_CTOR,
-        sum(Active_Volume) / (Active_Volume + Unsubs_Volume + Deleted_Volume + Unsubs_Volume) as Retention
+        coalesce(Bounced.bounced_Volume, 0) as Bounced_Volume,
+        Bounced.bounced_Unique_Open_Rate,
+        Bounced.bounced_Click_Rate,
+        Bounced.bounced_Total_CTOR,
+        coalesce(Deleted.deleted_Volume, 0) as Deleted_Volume,
+        Deleted.deleted_Unique_Open_Rate,
+        Deleted.deleted_Click_Rate,
+        Deleted.deleted_Total_CTOR
     from active 
     LEFT JOIN Unsubs using (Growth_Bucket, Incentivization)
     LEFT JOIN deleted using (Growth_Bucket, Incentivization)
     LEFT JOIN bounced using (Growth_Bucket, Incentivization)
+    --GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 )
 
 select * from all_subs

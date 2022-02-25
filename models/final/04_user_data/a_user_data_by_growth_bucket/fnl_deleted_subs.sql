@@ -11,9 +11,9 @@ SELECT
     SUBSCRIBERS.Growth_Bucket,
     SUBSCRIBERS.Incentivization,
     count(Email) Deleted_Volume,
-    sum(unique_opens)/sum(delivered) Deleted_UNIQUE_OPEN_RATE,
-    sum(total_clicks)/sum(delivered) Deleted_CLICK_RATE,
-    sum(total_clicks)/sum(total_opens) Deleted_TOTAL_CTOR
+    CASE WHEN sum(delivered) > 0 THEN sum(unique_opens)/sum(delivered) ELSE 0 END Deleted_UNIQUE_OPEN_RATE,
+    CASE WHEN sum(delivered) > 0 THEN sum(total_clicks)/sum(delivered) ELSE 0 END Deleted_CLICK_RATE,
+    CASE WHEN sum(total_opens) > 0 THEN sum(total_clicks)/sum(total_opens) ELSE 0 END Deleted_TOTAL_CTOR
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND > '2021-12-31' and Status = 'Deleted'
