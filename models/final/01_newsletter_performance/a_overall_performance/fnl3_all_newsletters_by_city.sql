@@ -40,3 +40,4 @@ select *
 from campaign_data_by_city
 WHERE Campaign_Date is not null and Campaign_Date > '2021-12-31'
 ORDER BY 1,2,3
+limit 10000
