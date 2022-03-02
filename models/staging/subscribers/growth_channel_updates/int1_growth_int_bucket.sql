@@ -17,7 +17,8 @@ DVM as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%digitalviking-DVM%'
 ), 
@@ -37,7 +38,8 @@ advisio_kubient as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%advisio%' or Growth_Channel ilike '%KUBTG03%'
 ), 
@@ -57,7 +59,8 @@ DMI as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%dmipartners%' 
 ), 
@@ -77,7 +80,8 @@ DMS as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%CoReg-DMS%'
 ), 
@@ -97,7 +101,8 @@ leadpulse as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%leadpulse%'
 ), 
@@ -117,7 +122,8 @@ NexxtHP as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%NexxtHP%'
 ), 
@@ -137,7 +143,8 @@ LENHP as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%LENHP%' or Growth_Channel ilike '%lensa%'
 ),

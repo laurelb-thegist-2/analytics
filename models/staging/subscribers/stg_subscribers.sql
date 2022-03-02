@@ -12,7 +12,8 @@ with subscribers as (
         REFERRALCODE as referral_code,
         REFERRALCOUNT as referral_count,
         CAMPAIGNNAME as campaign_name,
-        SOURCEBRAND as source_brand
+        SOURCEBRAND as source_brand,
+        PARTNERENGAGEMENTSURVEYS as Partner_Engagement_Surveys
     from analytics.core.all_subscribers 
     where list_id = '54eb7610971ecdad5354d8d07b2b6397'
 )

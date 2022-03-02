@@ -17,7 +17,8 @@ voluntary as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Status ilike '%Unsubscribed%'
 ), 
@@ -37,7 +38,8 @@ non_voluntary as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Status ilike '%Deleted%'
 ), 
@@ -57,7 +59,8 @@ bounced as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Status ilike '%Bounced%'
 ), 

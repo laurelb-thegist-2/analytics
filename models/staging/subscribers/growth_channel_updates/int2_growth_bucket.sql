@@ -17,7 +17,8 @@ organic as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE 'Organic/Unknown'
 ), 
@@ -37,7 +38,8 @@ dojo as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%DojoMojo%'
 ), 
@@ -57,7 +59,8 @@ coreg as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%CoReg%' and Growth_Channel not ilike '%mowMedia%' and Growth_Channel not ilike '%testMow%' and Growth_Channel not ilike '%NexxtHP%' and Growth_Channel not ilike '%CoReg-Campaign-Source%'
 ), 
@@ -77,7 +80,8 @@ influencer as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%Ambassador%'
 ), 
@@ -97,7 +101,8 @@ growth_from_socials as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ILIKE '%unpaid%' and Growth_Channel ILIKE '%socialmedia%' and Growth_Channel not ilike '%newsletter%'
 ), 
@@ -117,7 +122,8 @@ host_post as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%mowMedia%' or Growth_Channel ilike '%testMow%' or Growth_Channel ilike '%NexxtHP%' or Growth_Channel ilike '%CoReg-Campaign-Source%'
 ), 
@@ -137,7 +143,8 @@ newsletters as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%newsletter%' or Growth_Channel ilike '%paved-paid%'
 ), 
@@ -157,7 +164,8 @@ other_contests as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel not ilike '%dojomojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel ilike '%contest%'
 ), 
@@ -177,7 +185,8 @@ paid_social_media_fb as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%'
 ),
@@ -197,7 +206,8 @@ paid_social_media_tiktok as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel ilike '%TikTok%'
 ),
@@ -217,7 +227,8 @@ paid_social_media_snap as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel ilike '%Snap%'
 ),
@@ -237,7 +248,8 @@ referral as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%Referral%'
 ),
@@ -257,7 +269,8 @@ scholarship as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%Scholarship%'
 ),
@@ -277,7 +290,8 @@ search as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%search%'
 ),
@@ -297,7 +311,8 @@ social_stance as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%socialstance%'
 ),
@@ -317,7 +332,8 @@ student_parent_life as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%pln%' and Growth_Channel ilike '%luckiest%'
 ),
@@ -337,7 +353,8 @@ website as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     WHERE Growth_Channel ilike '%website%' and Growth_Channel not ilike '%newsletter%'
 ),

@@ -31,7 +31,8 @@ final_subscribers as (
         referral_code,
         referral_count,
         campaign_name,
-        source_brand
+        source_brand,
+        Partner_Engagement_Surveys
     from subscribers
     LEFT JOIN growth_int_bucket using (EMAIL)
     LEFT JOIN growth_bucket using (EMAIL)
