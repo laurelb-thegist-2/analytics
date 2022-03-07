@@ -359,6 +359,27 @@ website as (
     WHERE Growth_Channel ilike '%website%' and Growth_Channel not ilike '%newsletter%'
 ),
 
+liveintent as (
+    select 
+        EMAIL,
+        LEADID,
+        list_ID,
+        date_status_changed,
+        status,
+        Growth_Channel,
+        CASE WHEN Growth_Channel ilike '%LiveIntent%' THEN 'LiveIntent' END Growth_Bucket,
+        Incentivization,
+        Country,
+        CITIES,
+        referral_code,
+        referral_count,
+        campaign_name,
+        source_brand,
+        Partner_Engagement_Surveys
+    from subscribers
+    WHERE Growth_Channel ilike '%LiveIntent%'
+),
+
 subscribers_updated as (
     select * from organic
     union
@@ -393,6 +414,8 @@ subscribers_updated as (
     select * from student_parent_life
     union
     select * from website 
+    union
+    select * from liveintent
 )
 
 select * from subscribers_updated

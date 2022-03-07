@@ -11,6 +11,7 @@ SUBSCRIBERS as (
 active_subs as (
 SELECT 
     SUBSCRIBERS.Growth_Bucket,
+    SUBSCRIBERS.Growth_Int_Bucket,
     SUBSCRIBERS.Incentivization,
     count(Email) Active_Volume,
     CASE WHEN sum(delivered) > 0 THEN sum(unique_opens)/sum(delivered) ELSE 0 END Active_UNIQUE_OPEN_RATE,
@@ -21,7 +22,7 @@ SELECT
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND > '2021-12-31' and Status = 'Active'
-Group by 1,2
+Group by 1,2,3
 )
 
 select *

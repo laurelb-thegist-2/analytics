@@ -25,7 +25,8 @@ partner_clicks as (
     URL ilike '%clorox.ca%' or
     URL ilike '%hockeycanada%' or
     URL ilike '%reel/CZ0PGuGFCia%' or
-    URL ilike '%athleta%'
+    URL ilike '%athleta%' or
+    URL ilike '%sponsorpulse%'
 )
 
 select * from partner_clicks

@@ -9,6 +9,7 @@ SUBSCRIBERS as (
 Bounced_subs as (
 SELECT 
     SUBSCRIBERS.Growth_Bucket,
+    SUBSCRIBERS.Growth_Int_Bucket,
     SUBSCRIBERS.Incentivization,
     count(Email) Bounced_Volume,
     CASE WHEN sum(delivered) > 0 THEN sum(unique_opens)/sum(delivered) ELSE 0 END Bounced_UNIQUE_OPEN_RATE,
@@ -19,7 +20,7 @@ SELECT
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND > '2021-12-31' and Status = 'Bounced'
-Group by 1,2
+Group by 1,2,3
 )
 
 select *
