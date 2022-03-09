@@ -12,7 +12,8 @@ with campaign_opens as (
        Region as Region_of_Open,
        LISTID as List_ID
     from analytics.CAMPAIGN_MONITOR_EVENTS.campaign_opens
-    --where (city_of_open != 'Boardman' or city_of_open is NULL) and list_id = '54eb7610971ecdad5354d8d07b2b6397'
+    where list_id = '54eb7610971ecdad5354d8d07b2b6397' --sports news
+    --where list_id = '65ef2f913391ff42878e99dd01601196' --sports biz
 )
 
 select * from campaign_opens

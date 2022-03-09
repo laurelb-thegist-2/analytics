@@ -15,4 +15,4 @@ partner_clicks as (
 )
 
 SELECT * FROM partner_clicks
-WHERE CAMPAIGN_DATE = '2022-02-28'
+WHERE CAMPAIGN_DATE = '2022-03-07'

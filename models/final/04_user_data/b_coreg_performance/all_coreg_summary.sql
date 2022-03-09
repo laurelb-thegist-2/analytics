@@ -3,13 +3,14 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('stg_subscribers')}}
+    select * from {{ref('int4_final_subscribers')}}
 ),
 
 user_data_summary as (
     SELECT 
-        SUBSCRIBERS.email,
-        SUBSCRIBERS.Growth_Channel GROWTH_CHANNEL_DBT,
+        SUBSCRIBERS.Email,
+        SUBSCRIBERS.Growth_Channel,
+        SUBSCRIBERS.Growth_Int_Bucket,
         OPEN_SEND_CLICK_SUMMARY.FIRST_SEND,
         OPEN_SEND_CLICK_SUMMARY.MOST_RECENT_SEND,
         SUBSCRIBERS.date_status_changed, 
@@ -21,9 +22,9 @@ user_data_summary as (
         coalesce(sum(total_clicks)/sum(total_sends), 0) as CLICK_RATE
     FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL) 
-Group by 1,2,3,4,5,6
+Group by 1,2,3,4,5,6,7
 )
 
 select * from user_data_summary
-where GROWTH_CHANNEL_DBT ilike '%leadpulse%' and status = 'Active'
+where Growth_Int_Bucket IS NOT NULL AND FIRST_SEND > '2022-01-31' AND FIRST_SEND < '2022-03-01'
 limit 100000

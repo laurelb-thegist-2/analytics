@@ -26,7 +26,12 @@ partner_clicks as (
     URL ilike '%hockeycanada%' or
     URL ilike '%reel/CZ0PGuGFCia%' or
     URL ilike '%athleta%' or
-    URL ilike '%sponsorpulse%'
-)
+    URL ilike '%sponsorpulse%' or
+    URL ilike '%underarmour%' or
+    URL ilike '%corp.canadiantire.ca%' or 
+    URL ilike '%aAsqS_HYfE4&t=11s%' or
+    URL ilike '%sportchek.ca%' or
+    URL ilike '%ontariosportnetwork.ca%'
+)   
 
 select * from partner_clicks

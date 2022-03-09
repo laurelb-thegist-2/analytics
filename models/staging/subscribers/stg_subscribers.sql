@@ -15,7 +15,8 @@ with subscribers as (
         SOURCEBRAND as source_brand,
         PARTNERENGAGEMENTSURVEYS as Partner_Engagement_Surveys
     from analytics.core.all_subscribers 
-    where list_id = '54eb7610971ecdad5354d8d07b2b6397'
+    where list_id = '54eb7610971ecdad5354d8d07b2b6397' --sports news
+    --where list_id = '65ef2f913391ff42878e99dd01601196' --sports biz
 )
 
 select * from subscribers
