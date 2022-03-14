@@ -17,8 +17,8 @@ SELECT
     campaign_name,
     -1*(count(EMAIL)) as Churn
 FROM SUBSCRIBERS 
-WHERE date_status_changed > '2022-02-27' --Sunday
-AND date_status_changed < '2022-03-07' --Monday
+WHERE date_status_changed > '2022-03-06' --Sunday
+AND date_status_changed < '2022-03-14' --Monday
 AND status <> 'Active'
 Group by 1,2,3,4,5,6,7,8,9,10,11
 ORDER BY 1 DESC

@@ -10,7 +10,7 @@ partner_clicks as (
         count(email) total_clicks,
         count(distinct email) unique_clicks
     from campaign_clicks_details_subs
-    where URL ilike '%sponsorpulse%' --or URL ilike '%clorox.ca%' --or URL ilike '%hockeycanada%' 
+    where URL ilike '%gistbrand%' or URL ilike '%clorox%' --or URL ilike '%hockeycanada%' 
     GROUP BY 1,2--,3
 )
 
