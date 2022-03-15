@@ -1,7 +1,7 @@
 -- pulls from user queries in the intermediate -> 04_user_data folders
 
 with OPEN_SEND_CLICK_SUMMARY as (
-    select * from {{ref('int5_sends_opens_clicks_by_user')}}
+    select * from {{ref('int4_sends_opens_clicks_by_user')}}
 ),
 
 SUBSCRIBERS as (

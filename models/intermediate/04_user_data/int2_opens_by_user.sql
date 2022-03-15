@@ -1,4 +1,4 @@
--- pulls from int2_opens in 02_growth -> b_retentio
+-- pulls from int2_opens in 02_growth -> b_retention
 
 with opens as (
     select * from {{ref('int2_opens')}}
