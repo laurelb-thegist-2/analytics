@@ -22,18 +22,20 @@ partner_clicks as (
     URL ilike '%butcherbox%' or
     URL ilike '%9NZvM1918_E%' or
     URL ilike '%olympicchannel-chloe-kim-AuEKTqUjj6KjBeOGs5%' or
-    URL ilike '%clorox.ca%' or
+    URL ilike '%clorox%' or
     URL ilike '%hockeycanada%' or
     URL ilike '%reel/CZ0PGuGFCia%' or
     URL ilike '%athleta%' or
     URL ilike '%sponsorpulse%' or
     URL ilike '%underarmour%' or
-    URL ilike '%corp.canadiantire.ca%' or 
+    URL ilike '%canadiantire%' or 
     URL ilike '%aAsqS_HYfE4&t=11s%' or
-    URL ilike '%sportchek.ca%' or
-    URL ilike '%ontariosportnetwork.ca%' or 
+    URL ilike '%sportchek%' or
+    URL ilike '%ontariosportnetwork%' or 
     URL ilike '%theplayerstribune%' or
-    URL ilike '%campaignmonitor%'
+    URL ilike '%campaignmonitor%' or
+    URL ilike '%math-lady-confused-lady%' or
+    URL ilike '%lmnt%'
 )   
 
 select * from partner_clicks

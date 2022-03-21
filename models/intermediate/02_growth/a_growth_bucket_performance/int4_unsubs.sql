@@ -26,4 +26,3 @@ Group by 1,2,3
 select *
 from Unsubs_subs
 ORDER BY 1
-

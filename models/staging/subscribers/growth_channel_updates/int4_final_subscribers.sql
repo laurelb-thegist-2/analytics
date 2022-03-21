@@ -22,7 +22,7 @@ final_subscribers as (
         date_status_changed,
         STATUS,
         coalesce(Growth_Channel, 'Organic/Unknown') Growth_Channel,
-        growth_int_bucket.Growth_Int_Bucket ,
+        coalesce(growth_int_bucket.Growth_Int_Bucket, 'N/A') Growth_Int_Bucket ,
         coalesce(growth_bucket.Growth_Bucket, 'Organic/Unknown') Growth_Bucket,
         churn_type.Type_of_Churn,
         coalesce(Incentivization, 'Unincentivized') Incentivization,

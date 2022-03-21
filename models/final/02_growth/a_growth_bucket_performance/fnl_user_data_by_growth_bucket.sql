@@ -17,6 +17,7 @@ Unsubs as (
 all_subs as ( 
     select 
         Growth_Bucket,
+        Growth_Int_Bucket,
         Incentivization, 
         coalesce(active.Active_Volume, 0) as Active_Volume,
         active.Active_Unique_Open_Rate,
@@ -43,9 +44,9 @@ all_subs as (
         Deleted.deleted_Partner_Click_Rate,
         Deleted.deleted_Partner_Total_CTOR
     from active 
-    LEFT JOIN Unsubs using (Growth_Bucket, Incentivization)
-    LEFT JOIN deleted using (Growth_Bucket, Incentivization)
-    LEFT JOIN bounced using (Growth_Bucket, Incentivization)
+    LEFT JOIN Unsubs using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
+    LEFT JOIN deleted using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
+    LEFT JOIN bounced using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
     --GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 )
 

@@ -38,5 +38,5 @@ campaign_data_by_date as (
 )
 
 select * from campaign_data_by_date
-WHERE Campaign_Date > '2021-12-31'
+WHERE Campaign_Date > '2022-02-28'
 ORDER BY 1
