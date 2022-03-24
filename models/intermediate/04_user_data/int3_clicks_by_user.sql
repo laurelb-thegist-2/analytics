@@ -3,7 +3,7 @@ with campaign_clicks as (
 ),
 
 partner_clicks as (
-    select * from {{ref('int1_partner_clicks')}}
+    select * from {{ref('stg_partner_clicks')}}
 ),
 
 CAMPAIGN_DETAILS as (

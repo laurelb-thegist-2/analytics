@@ -1,18 +1,17 @@
 with CLICKS as (
-    select * from {{ref('stg_campaign_clicks')}}
+    select * from {{ref('int3a_all_clicks_by_campaign')}}
 ),
 
-CAMPAIGN_DETAILS as (
-    select * from {{ref('stg_campaign_details')}}
+PARTNER_CLICKS as (
+    select * from {{ref('int3b_partner_clicks_by_campaign')}}
 ),
 
 clicks_by_campaign as (
     select
-        Campaign_Details.NAME,
-        Campaign_Details.CAMPAIGN_DATE,
-        CLICKS.*
-    from CAMPAIGN_DETAILS
-LEFT JOIN clicks using (Campaign_ID)
+        CLICKS.*,
+        PARTNER_CLICKS.PARTNER_CLICKS_EMAIL
+    from CLICKS
+LEFT JOIN PARTNER_CLICKS using (Campaign_ID, NAME, CAMPAIGN_DATE, City_of_Click, Country_Code_of_Click, timestamp, Region_of_Click, List_ID, URL)
 )
 
 select * from clicks_by_campaign

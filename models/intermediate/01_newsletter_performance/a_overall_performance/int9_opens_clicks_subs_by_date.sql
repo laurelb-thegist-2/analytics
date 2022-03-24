@@ -16,7 +16,9 @@ opens_clicks_subscribers as (
         sum(opens_subscribers.Non_Gmail_Total_Opens) Non_Gmail_Total_Opens,
         sum(opens_subscribers.Unique_Opens) Unique_Opens,
         sum(clicks_subscribers.Total_Clicks) Total_Clicks,
-        sum(clicks_subscribers.Unique_Clicks) Unique_Clicks
+        sum(clicks_subscribers.Unique_Clicks) Unique_Clicks,
+        sum(clicks_subscribers.Total_Partner_Clicks) Total_Partner_Clicks,
+        sum(clicks_subscribers.Unique_Partner_Clicks) Unique_Partner_Clicks
     from opens_subscribers
     LEFT JOIN clicks_subscribers 
     USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel, Growth_Bucket, Incentivization)

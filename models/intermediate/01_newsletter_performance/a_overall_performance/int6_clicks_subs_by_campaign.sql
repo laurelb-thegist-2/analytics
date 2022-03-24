@@ -17,7 +17,9 @@ clicks_subscribers as (
         coalesce(Growth_Bucket, 'Organic/Unknown') Growth_Bucket,
         coalesce(Incentivization, 'Unincentivized') Incentivization,
         count(clicks.email) total_clicks,
-        count(distinct clicks.email) unique_clicks
+        count(distinct clicks.email) unique_clicks,
+        count(clicks.partner_clicks_email) total_partner_clicks,
+        count(distinct clicks.partner_clicks_email) unique_partner_clicks
     from clicks
     LEFT JOIN subscribers using (email)
     GROUP BY 1,2,3,4,5,6,7,8

@@ -21,7 +21,9 @@ opens_clicks as (
         opens.Non_Gmail_Total_Opens,
         opens.Unique_Opens,
         CASE WHEN clicks.Total_Clicks is NULL THEN 0 ELSE clicks.Total_Clicks END Total_Clicks,
-        CASE WHEN clicks.Unique_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Clicks
+        CASE WHEN clicks.Unique_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Clicks,
+        CASE WHEN clicks.Total_Partner_Clicks is NULL THEN 0 ELSE clicks.Total_Partner_Clicks END Total_Partner_Clicks,
+        CASE WHEN clicks.Unique_Partner_Clicks is NULL THEN 0 ELSE clicks.Unique_Clicks END Unique_Partner_Clicks
     from opens
     FULL OUTER JOIN clicks 
     USING (Campaign_ID, Name, CAMPAIGN_DATE, COUNTRY, City, Growth_Channel, Growth_Bucket, Incentivization)
