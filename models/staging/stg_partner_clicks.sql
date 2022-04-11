@@ -41,4 +41,9 @@ URL ilike '%ontariosportnetwork%' or
 URL ilike '%theplayerstribune%' or
 URL ilike '%campaignmonitor%' or
 URL ilike '%math-lady-confused-lady%' or
-URL ilike '%lmnt%'
+URL ilike '%lmnt%'or 
+URL ilike '%babbel%' or 
+URL ilike '%adidas%' or
+URL ilike '%cupofte%' or 
+URL ilike '%the-first-raptors-star%' or
+URL ilike '%babbel%'

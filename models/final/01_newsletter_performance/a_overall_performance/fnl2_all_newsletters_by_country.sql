@@ -43,5 +43,5 @@ campaign_data_by_country as (
 
 select *
 from campaign_data_by_country
-WHERE Campaign_Date is not null and Campaign_Date > '2022-02-28'
+WHERE Campaign_Date is not null and Campaign_Date > '2022-03-15'
 ORDER BY 1,2

@@ -44,5 +44,5 @@ campaign_data_by_date as (
 )
 
 select * from campaign_data_by_date
-WHERE Campaign_Date > '2022-02-28'
+WHERE Campaign_Date > '2022-03-15'
 ORDER BY 1
