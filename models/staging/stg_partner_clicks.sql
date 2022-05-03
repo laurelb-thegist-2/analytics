@@ -46,4 +46,7 @@ URL ilike '%babbel%' or
 URL ilike '%adidas%' or
 URL ilike '%cupofte%' or 
 URL ilike '%the-first-raptors-star%' or
-URL ilike '%babbel%'
+URL ilike '%babbel%' or 
+URL ilike '%olliepets%' or 
+URL ilike '%keepherinplay%' or
+URL ilike '%policyme%'

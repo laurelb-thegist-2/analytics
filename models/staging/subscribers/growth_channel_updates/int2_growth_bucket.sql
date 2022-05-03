@@ -31,7 +31,7 @@ dojo as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN Growth_Channel ILIKE '%DojoMojo%' THEN 'Dojo' END Growth_Bucket,
+        CASE WHEN Growth_Channel ILIKE '%Dojo%' THEN 'Dojo' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -41,7 +41,7 @@ dojo as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE Growth_Channel ILIKE '%DojoMojo%'
+    WHERE Growth_Channel ILIKE '%Dojo%'
 ), 
 
 coreg as (
@@ -94,7 +94,7 @@ growth_from_socials as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN Growth_Channel ILIKE '%unpaid%' and Growth_Channel ILIKE '%socialmedia%' and Growth_Channel not ilike '%newsletter%' THEN 'Growth from Socials' END Growth_Bucket,
+        CASE WHEN (Growth_Channel ILIKE '%unpaid%' and Growth_Channel ILIKE '%socialmedia%' and Growth_Channel not ilike '%newsletter%') or Growth_Channel ilike '%citylead%' or Growth_Channel ilike '%instagram%' THEN 'Growth from Socials' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -104,7 +104,7 @@ growth_from_socials as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE Growth_Channel ILIKE '%unpaid%' and Growth_Channel ILIKE '%socialmedia%' and Growth_Channel not ilike '%newsletter%'
+    WHERE (Growth_Channel ILIKE '%unpaid%' and Growth_Channel ILIKE '%socialmedia%' and Growth_Channel not ilike '%newsletter%') or Growth_Channel ilike '%citylead%' or Growth_Channel ilike '%instagram%'
 ), 
 
 host_post as (
@@ -157,7 +157,7 @@ other_contests as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN Growth_Channel not ilike '%dojomojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel ilike '%contest%' THEN 'Other Contests' END Growth_Bucket,
+        CASE WHEN Growth_Channel not ilike '%dojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel not ilike '%Social Stance%' and Growth_Channel ilike '%contest%' THEN 'Other Contests' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -167,7 +167,7 @@ other_contests as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE Growth_Channel not ilike '%dojomojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel ilike '%contest%'
+    WHERE Growth_Channel not ilike '%dojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel not ilike '%Social Stance%' and Growth_Channel ilike '%contest%'
 ), 
 
 paid_social_media_fb as (
@@ -178,7 +178,7 @@ paid_social_media_fb as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%' THEN 'Paid Social Media - FB' END Growth_Bucket,
+        CASE WHEN (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%') or Growth_Channel ilike '%fb+%' THEN 'Paid Social Media - FB' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -188,7 +188,7 @@ paid_social_media_fb as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%'
+    WHERE (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%') or Growth_Channel ilike '%fb+%'
 ),
 
 paid_social_media_tiktok as (
@@ -304,7 +304,7 @@ social_stance as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN Growth_Channel ilike '%socialstance%' THEN 'Social Stance' END Growth_Bucket,
+        CASE WHEN Growth_Channel ilike '%socialstance%' or Growth_Channel ilike '%Social Stance%' THEN 'Social Stance' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -314,7 +314,7 @@ social_stance as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE Growth_Channel ilike '%socialstance%'
+    WHERE Growth_Channel ilike '%socialstance%' or Growth_Channel ilike '%Social Stance%'
 ),
 
 student_parent_life as (
