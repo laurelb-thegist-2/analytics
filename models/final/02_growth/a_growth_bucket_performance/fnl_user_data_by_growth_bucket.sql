@@ -18,6 +18,7 @@ all_subs as (
     select 
         Growth_Bucket,
         Growth_Int_Bucket,
+        --Growth_Channel,
         Incentivization, 
         coalesce(active.Active_Volume, 0) as Active_Volume,
         active.Active_Unique_Open_Rate,
@@ -47,8 +48,9 @@ all_subs as (
     LEFT JOIN Unsubs using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
     LEFT JOIN deleted using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
     LEFT JOIN bounced using (Growth_Bucket, Growth_Int_Bucket, Incentivization)
-    --GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19
 )
 
 select * from all_subs
-order by 1
+--where Growth_Bucket not ilike '%coreg%' and Growth_Bucket not ilike '%host%' and Growth_Bucket not ilike '%dojo%'
+order by 2,1
+limit 10000

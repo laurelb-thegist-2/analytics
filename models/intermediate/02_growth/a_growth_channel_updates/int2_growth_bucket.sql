@@ -170,7 +170,7 @@ other_contests as (
     WHERE Growth_Channel not ilike '%dojo%' and Growth_Channel not ilike '%PLN%' and Growth_Channel not ilike '%socialstance%' and Growth_Channel not ilike '%Social Stance%' and Growth_Channel ilike '%contest%'
 ), 
 
-paid_social_media_fb as (
+paid_social_media_youtube as (
     select 
         EMAIL,
         LEADID,
@@ -178,7 +178,7 @@ paid_social_media_fb as (
         date_status_changed,
         status,
         Growth_Channel,
-        CASE WHEN (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%') or Growth_Channel ilike '%fb+%' THEN 'Paid Social Media - FB' END Growth_Bucket,
+        CASE WHEN Growth_Channel ilike '%youtube%' THEN 'Paid Social Media - Youtube' END Growth_Bucket,
         Incentivization,
         Country,
         CITIES,
@@ -188,7 +188,28 @@ paid_social_media_fb as (
         source_brand,
         Partner_Engagement_Surveys
     from subscribers
-    WHERE (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%') or Growth_Channel ilike '%fb+%'
+    WHERE Growth_Channel ilike '%youtube%'
+),
+
+paid_social_media_fb as (
+    select 
+        EMAIL,
+        LEADID,
+        list_ID,
+        date_status_changed,
+        status,
+        Growth_Channel,
+        CASE WHEN (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%youtube%' and Growth_Channel not ilike '%website%') or Growth_Channel ilike '%fb+%' THEN 'Paid Social Media - FB' END Growth_Bucket,
+        Incentivization,
+        Country,
+        CITIES,
+        referral_code,
+        referral_count,
+        campaign_name,
+        source_brand,
+        Partner_Engagement_Surveys
+    from subscribers
+    WHERE (Growth_Channel ilike '%socialmedia%' and Growth_Channel ilike '%paid%' and Growth_Channel not ilike '%contest%' and Growth_Channel not ilike '%unpaid%' and Growth_Channel not ilike '%TikTok%' and Growth_Channel not ilike '%snap%' and Growth_Channel not ilike '%website%' and Growth_Channel not ilike '%youtube%') or Growth_Channel ilike '%fb+%'
 ),
 
 paid_social_media_tiktok as (
@@ -396,6 +417,8 @@ subscribers_updated as (
     select * from newsletters
     union
     select * from other_contests
+    union
+    select * from paid_social_media_youtube
     union
     select * from paid_social_media_fb
     union

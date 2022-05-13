@@ -1,5 +1,5 @@
 with PARTNER_CLICKS as (
-    select * from {{ref('stg_partner_clicks')}}
+    select * from {{ref('int3_partner_clicks')}}
 ),
 
 CAMPAIGN_DETAILS as (
