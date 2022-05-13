@@ -5,7 +5,7 @@ with email_events as (
         Action,
         Timestamp,
         URL
-    from analytics.core.email_events
+    from {{ source('core', 'email_events') }}
 )
 
 select * from email_events

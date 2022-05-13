@@ -14,7 +14,7 @@ with campaign_details as (
        Subscriber_Clicks,
        Subscriber_Click_Rate,
        Total_Unsubscribes
-    from analytics.core.campaign_details
+    from {{ source('core', 'campaign_details') }}
     --WHERE NAME ilike '%sports biz%' and NAME ilike '%issue%'
     WHERE NAME ilike '%newsletter%'
 )

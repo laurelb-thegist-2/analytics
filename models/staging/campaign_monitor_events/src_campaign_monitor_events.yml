@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: CAMPAIGN_MONITOR_EVENTS
+    database: analytics
+    schema: CAMPAIGN_MONITOR_EVENTS
+    tables:
+      - name: campaign_bounces
+      - name: campaign_clicks
+      - name: campaign_opens
+        loaded_at_field: _etl_loaded_at
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
