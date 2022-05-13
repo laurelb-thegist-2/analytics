@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_subscribers
+    columns: 
+      - name: EMAIL
+        tests:
+          - unique
+          - not_null
+      - name: Growth_Channel
+        tests:
+          - not_null
+      - name: Status
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Active
+                - Unsubscribed
+                - Bounced
+                - Deleted
+  - name: stg_campaign_details
+    columns: 
+      - name: Campaign_ID
+        tests:
+          - unique
+  - name: stg_email_events
+    columns:
+      - name: Action
+        tests:
+          - accepted_values:
+              values:
+                - open
+                - click
+
