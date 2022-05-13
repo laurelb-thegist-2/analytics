@@ -23,7 +23,7 @@ SELECT
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND < '2022-03-31' and FIRST_SEND > '2021-12-31' and Status = 'Active'
-Group by 1,2,3--,4
+Group by 1,2,3,4
 )
 
 select *

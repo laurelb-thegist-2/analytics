@@ -1,0 +1,46 @@
+with active as (
+    select * from {{ref('test_active')}}
+),
+
+all_subs as (
+    select * from {{ref('all_subs')}}
+),
+
+Bounced as (
+    select * from {{ref('test_bounced')}}
+),
+
+Deleted as (
+    select * from {{ref('test_deleted')}}
+),
+
+Unsubs as (
+    select * from {{ref('test_unsubs')}}
+),
+
+growth_performance as ( 
+    select 
+        Growth_Bucket,
+        Growth_Int_Bucket,
+        Incentivization,
+        count(all_subs.Email) as Total_Volume,
+        sum(all_subs.Openers) as Total_Openers,
+        sum(all_subs.Clickers) as Total_Clickers, 
+        count(active.Email) as Active_Volume,
+        sum(active.unique_opens) / sum(active.delivered) Active_UOR,
+        sum(active.total_clicks) / sum(active.delivered) Active_CTR,
+        count(unsubs.Email) as Unsub_Volume,
+        count(deleted.Email) as Deleted_Volume,
+        count(bounced.Email) as Bounced_Volume
+    from active 
+    LEFT JOIN all_subs using (Growth_Bucket, Growth_Int_Bucket, Growth_Channel, Incentivization)
+    LEFT JOIN unsubs using (Growth_Bucket, Growth_Int_Bucket, Growth_Channel, Incentivization)
+    LEFT JOIN deleted using (Growth_Bucket, Growth_Int_Bucket, Growth_Channel, Incentivization)
+    LEFT JOIN bounced using (Growth_Bucket, Growth_Int_Bucket, Growth_Channel, Incentivization)
+    WHERE first_send > '2021-12-31' and first_send < '2022-03-01'
+    GROUP BY 1,2,3
+)
+
+select * from growth_performance
+order by 1,2
+limit 10000
