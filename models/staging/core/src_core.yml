@@ -2,10 +2,15 @@ version: 2
 
 sources:
   - name: core
+    description: Database that contains our core data analytics tables for all of our newsletter data from campaign monitor and historical data from mail chimp. 
     database: analytics
     schema: core
     tables:
       - name: campaign_details
+        description: Provides information regarding every campaign that has been sent.
       - name: email_events
+        description: Details any action that has been taken by a subscriber on a newsletter.
       - name: email_sends
+        description: Details all subscribers that have been sent by a newsletter.
       - name: all_subscribers
+        description: Staged subscriber data of our newsletter subscribers. 

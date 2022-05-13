@@ -2,15 +2,19 @@ version: 2
 
 models:
   - name: stg_subscribers
+    description: Staged subscriber data of our newsletter subscribers. 
     columns: 
       - name: EMAIL
+        description: The primary identifier for a subscirber. 
         tests:
           - unique
           - not_null
       - name: Growth_Channel
+        description: How the subscriber was acquired.
         tests:
           - not_null
       - name: Status
+        description: Indicates whether the subscriber is currently receiving the newsletter, has taken themselves off the list, has been deleted or their emails have bounced.
         tests:
           - not_null
           - accepted_values:
@@ -20,13 +24,17 @@ models:
                 - Bounced
                 - Deleted
   - name: stg_campaign_details
+    description: Provides information regarding every campaign that has been sent.
     columns: 
       - name: Campaign_ID
+        description: Primary unique identifier for each campaign.
         tests:
           - unique
   - name: stg_email_events
+    description: Details any action that has been taken by a subscriber on a newsletter.
     columns:
       - name: Action
+        description: There are two unique actions that can occur; an open and a click.
         tests:
           - accepted_values:
               values:
