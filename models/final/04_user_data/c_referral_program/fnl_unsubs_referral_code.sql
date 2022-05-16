@@ -4,7 +4,7 @@ with user_data_summary as (
 
 select 
    email,
-   Growth_Channel,
+   Growth_Bucket,
    status,
    referral_code,
    referral_count,

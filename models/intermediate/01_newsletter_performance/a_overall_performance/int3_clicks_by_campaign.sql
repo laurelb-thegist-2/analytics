@@ -9,7 +9,7 @@ PARTNER_CLICKS as (
 clicks_by_campaign as (
     select
         CLICKS.*,
-        PARTNER_CLICKS.PARTNER_CLICKS_EMAIL
+        PARTNER_CLICKS.EMAIL as PARTNER_CLICKS_EMAIL
     from CLICKS
 LEFT JOIN PARTNER_CLICKS using (Campaign_ID, NAME, CAMPAIGN_DATE, City_of_Click, Country_Code_of_Click, timestamp, Region_of_Click, List_ID, URL)
 )
