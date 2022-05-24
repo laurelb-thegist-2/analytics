@@ -7,7 +7,6 @@ models:
       - name: EMAIL
         description: The primary identifier for a subscirber. 
         tests:
-          - unique
           - not_null
       - name: Growth_Channel
         description: How the subscriber was acquired.

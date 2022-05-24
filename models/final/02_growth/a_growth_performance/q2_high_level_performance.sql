@@ -10,10 +10,10 @@ SUBSCRIBERS as (
 
 Total_subs as (
 SELECT 
-    SUBSCRIBERS.Growth_Bucket,
-    SUBSCRIBERS.Growth_Int_Bucket,
+    coalesce(SUBSCRIBERS.Growth_Bucket, 'Organic/Unknown') as Growth_Bucket,
+    coalesce(SUBSCRIBERS.Growth_Int_Bucket, 'N/A') as Growth_Int_Bucket,
     --SUBSCRIBERS.Growth_Channel,
-    SUBSCRIBERS.Incentivization,
+    coalesce(SUBSCRIBERS.Incentivization, 'Unincentivized') as Incentivization,
     count(Email) Total_Volume,
     sum(CASE WHEN unique_opens > 0 THEN 1 ELSE 0 END) Openers,
     sum(CASE WHEN total_clicks > 0 THEN 1 ELSE 0 END) Clickers,

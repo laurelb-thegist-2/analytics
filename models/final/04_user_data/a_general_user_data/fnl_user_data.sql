@@ -11,10 +11,14 @@ SELECT
     SUBSCRIBERS.Growth_Channel,
     SUBSCRIBERS.Growth_Int_Bucket,
     SUBSCRIBERS.Growth_Bucket,
-    FIRST_SEND,
-    MOST_RECENT_SEND,
+    SUBSCRIBERS.CITIES,
+    SUBSCRIBERS.COUNTRY,
     SUBSCRIBERS.Email,
     SUBSCRIBERS.Status,
+    FIRST_SEND,
+    MOST_RECENT_SEND,
+    FIRST_OPEN,
+    MOST_RECENT_OPEN,
     sum(delivered) AS DELIVERED,
     sum(unique_opens) as UNIQUE_OPENS,
     sum(total_opens) as TOTAL_OPENS,
@@ -24,10 +28,11 @@ SELECT
     case when sum(total_opens) > 0 then sum(total_clicks)/sum(total_opens) else 0 end as TOTAL_CTOR
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-Group by 1,2,3,4,5,6,7
+Group by 1,2,3,4,5,6,7,8,9,10,11
 )
 
 select * from user_data_by_growth_channel
+--WHERE FIRST_SEND > dateadd(week, -2, GETDATE()) and CITIES = 'DAL' and Growth_Channel ilike '%organic/unknown%' and status = 'Active'
 ORDER BY 1,2,3,4,5,6
 limit 1000000
 
