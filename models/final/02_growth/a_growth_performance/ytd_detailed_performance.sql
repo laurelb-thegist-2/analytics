@@ -12,7 +12,7 @@ Total_subs as (
 SELECT 
     coalesce(SUBSCRIBERS.Growth_Bucket, 'Organic/Unknown') as Growth_Bucket,
     coalesce(SUBSCRIBERS.Growth_Int_Bucket, 'N/A') as Growth_Int_Bucket,
-    --SUBSCRIBERS.Growth_Channel,
+    SUBSCRIBERS.Growth_Channel,
     coalesce(SUBSCRIBERS.Incentivization, 'Unincentivized') as Incentivization,
     count(Email) Total_Volume,
     sum(CASE WHEN unique_opens > 0 THEN 1 ELSE 0 END) Openers,
@@ -26,10 +26,10 @@ SELECT
     sum(CASE WHEN status = 'Bounced' THEN 1 ELSE 0 END) Bounced_Volume
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE FIRST_SEND < '2022-06-01' and FIRST_SEND > '2022-04-30' and Growth_Int_Bucket ilike '%leadpulse%'
-Group by 1,2,3--,4
+WHERE FIRST_SEND > '2021-12-31'
+Group by 1,2,3,4
 )
 
 select *
-from Total_subs 
+from Total_subs
 ORDER BY 1
