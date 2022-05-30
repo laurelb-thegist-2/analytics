@@ -19,7 +19,7 @@ select
          WHEN MOST_RECENT_OPEN < dateadd(day, -14, GETDATE()) and MOST_RECENT_OPEN >= dateadd(day, -21, GETDATE()) THEN 2
          WHEN MOST_RECENT_OPEN < dateadd(day, -21, GETDATE()) THEN 1
     ELSE 1 END as Recency_Rating,
-    total_opens,
+    Unique_Opens,
     UNIQUE_OPEN_RATE,
     CASE WHEN UNIQUE_OPEN_RATE >= 0.9 THEN 5
          WHEN UNIQUE_OPEN_RATE < 0.9 AND UNIQUE_OPEN_RATE >= 0.6 THEN 4
@@ -42,7 +42,7 @@ select
     Delivered,
     MOST_RECENT_OPEN,
     Recency_Rating,
-    total_opens,
+    Unique_Opens,
     UNIQUE_OPEN_RATE,
     Frequency_Rating,
     concat(Recency_Rating, Frequency_Rating) as Recency_Frequency

@@ -1,5 +1,5 @@
 with int1_recency_frequency as (
-    select * from {{ref('int1_rf_rating')}}
+    select * from {{ref('int1_rf_opens_rating')}}
 ),
 
 rf_analysis as (
@@ -14,7 +14,7 @@ select
     Delivered,
     MOST_RECENT_OPEN,
     Recency_Rating,
-    total_opens,
+    Unique_Opens,
     UNIQUE_OPEN_RATE,
     Frequency_Rating,
     CASE 
@@ -50,7 +50,7 @@ select
             Recency_Frequency = 41 or 
             Recency_Frequency = 51 
         THEN 'Bad' 
-    ELSE NULL END as "Open_Recency_Frequency_Rating"     
+    ELSE NULL END as Open_Recency_Frequency_Rating     
 from int1_recency_frequency
 where Status = 'Active'
 )

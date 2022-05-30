@@ -5,7 +5,7 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('int4_final_subscribers')}}
+    select * from {{ref('int2_final_subscribers')}}
 ),
 
 Total_subs as (

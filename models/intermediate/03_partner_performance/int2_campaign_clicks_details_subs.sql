@@ -3,7 +3,7 @@ with campaign_clicks_details as (
 ),
 
 subscribers as (
-    select * from {{ref('int4_final_subscribers')}}
+    select * from {{ref('int2_final_subscribers')}}
 ),
 
 campaign_clicks_details_subs as (

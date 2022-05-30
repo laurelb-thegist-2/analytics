@@ -3,7 +3,7 @@ with OPEN_SEND_CLICK_SUMMARY as (
 ),
 
 SUBSCRIBERS as (
-    select * from {{ref('int4_final_subscribers')}}
+    select * from {{ref('int2_final_subscribers')}}
 ),
 
 new_subs_by_growth_channel as (
