@@ -4,7 +4,7 @@ with int1_subscribers as (
 
 fnl_subscribers as (
     select 
-        EMAIL,
+        lower(EMAIL) as Email,
         LEADID,
         list_ID,
         date_status_changed,
@@ -40,6 +40,7 @@ fnl_subscribers as (
                 Growth_Bucket ILIKE '%Other contests%' 
             THEN 'Contests'
         ELSE 'Organic' END as Growth_Summary,
+        coalesce(Growth_Bucket, 'Organic/Unknown') Growth_Bucket,
         coalesce(Growth_Int_Bucket, 'N/A') Growth_Int_Bucket,
         coalesce(Growth_Channel, 'Organic/Unknown') Growth_Channel,
         coalesce(Type_of_Churn, 'N/A') Type_of_Churn,
@@ -55,5 +56,3 @@ fnl_subscribers as (
 )
 
 select * from fnl_subscribers
-where status = 'Active'
-limit 10000000

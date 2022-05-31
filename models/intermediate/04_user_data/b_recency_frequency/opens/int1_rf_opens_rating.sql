@@ -7,6 +7,7 @@ select
     Growth_Channel,
     Growth_Int_Bucket,
     Growth_Bucket,
+    Growth_Summary,
     Email,
     Status,
     Country,
@@ -17,7 +18,7 @@ select
          WHEN MOST_RECENT_OPEN < dateadd(day, -3, GETDATE()) and MOST_RECENT_OPEN >= dateadd(day, -7, GETDATE()) THEN 4
          WHEN MOST_RECENT_OPEN < dateadd(day, -7, GETDATE()) and MOST_RECENT_OPEN >= dateadd(day, -14, GETDATE()) THEN 3
          WHEN MOST_RECENT_OPEN < dateadd(day, -14, GETDATE()) and MOST_RECENT_OPEN >= dateadd(day, -21, GETDATE()) THEN 2
-         WHEN MOST_RECENT_OPEN < dateadd(day, -21, GETDATE()) THEN 1
+         WHEN MOST_RECENT_OPEN < dateadd(day, -21, GETDATE()) or MOST_RECENT_OPEN is NULL THEN 1
     ELSE 1 END as Recency_Rating,
     Unique_Opens,
     UNIQUE_OPEN_RATE,
@@ -28,13 +29,13 @@ select
          WHEN UNIQUE_OPEN_RATE = 0 THEN 1
     ELSE 1 END as Frequency_Rating
 from user_data
-where Status = 'Active'
 )
 
 select
     Growth_Channel,
     Growth_Int_Bucket,
     Growth_Bucket,
+    Growth_Summary,
     Email,
     Status,
     Country,

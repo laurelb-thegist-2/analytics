@@ -12,6 +12,7 @@ opens_quality_by_growth_channel as (
         SUM(CASE WHEN Open_Recency_Frequency_Rating = 'Bad' THEN 1 ELSE 0 END) as Bad_Subscribers,
         SUM(CASE WHEN Open_Recency_Frequency_Rating = 'Bad' THEN 1 ELSE 0 END)  / COUNT(email) as Bad_Percent_of_Total
     from opens_quality
+    where status = 'Active'
     group by 1
 )
 

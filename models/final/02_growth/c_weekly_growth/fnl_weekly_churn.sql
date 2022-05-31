@@ -8,6 +8,7 @@ SELECT
     Growth_Channel,
     Growth_Int_Bucket,
     Growth_Bucket,
+    Growth_Summary,
     Incentivization,
     Type_of_Churn,
     status,
@@ -20,7 +21,7 @@ FROM SUBSCRIBERS
 WHERE date_status_changed > dateadd(day, -8, GETDATE()) --Sunday
 AND date_status_changed < GETDATE() --Monday
 AND status <> 'Active'
-Group by 1,2,3,4,5,6,7,8,9,10,11
+Group by 1,2,3,4,5,6,7,8,9,10,11,12
 ORDER BY 1 DESC
 )
 

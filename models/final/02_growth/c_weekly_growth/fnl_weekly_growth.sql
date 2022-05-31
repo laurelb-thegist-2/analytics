@@ -12,6 +12,7 @@ SELECT
     SUBSCRIBERS.Growth_Channel Growth_Channel_DBT,
     subscribers.Growth_Int_Bucket,
     subscribers.Growth_Bucket,
+    subscribers.Growth_Summary,
     subscribers.Incentivization,
     subscribers.Status,
     coalesce(subscribers.Country, 'US') Country,
@@ -23,7 +24,7 @@ FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE OPEN_SEND_CLICK_SUMMARY.FIRST_SEND > dateadd(day, -8, GETDATE()) --Sunday
 AND OPEN_SEND_CLICK_SUMMARY.FIRST_SEND < GETDATE() --Monday
-Group by 1,2,3,4,5,6,7,8,9,10
+Group by 1,2,3,4,5,6,7,8,9,10,11
 ORDER BY 1 DESC
 )
 
