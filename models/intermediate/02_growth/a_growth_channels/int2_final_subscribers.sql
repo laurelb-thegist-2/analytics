@@ -23,6 +23,9 @@ fnl_subscribers as (
                 Growth_Bucket ILIKE '%Referral%' 
             THEN 'Referral'
             WHEN 
+                Growth_Bucket ILIKE '%Scholarship%'
+            THEN 'Scholarship'
+            WHEN 
                 Growth_Bucket ILIKE '%LiveIntent%' 
                 or Growth_Bucket ILIKE '%Newsletters%'
             THEN 'Newsletters'
@@ -33,8 +36,7 @@ fnl_subscribers as (
                 Growth_Bucket ILIKE '%CoReg%' 
                 or Growth_Bucket ILIKE '%Host & Post%' 
             THEN 'API'
-            WHEN 
-                Growth_Bucket ILIKE '%Scholarship%' or 
+            WHEN  
                 Growth_Bucket ILIKE '%Dojo%' or Growth_Bucket ILIKE '%Social Stance%' or 
                 Growth_Bucket ILIKE '%Student Parent Life%' or 
                 Growth_Bucket ILIKE '%Other contests%' 

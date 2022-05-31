@@ -14,7 +14,6 @@ SELECT
     coalesce(SUBSCRIBERS.Growth_Bucket, 'Organic/Unknown') as Growth_Bucket,
     coalesce(SUBSCRIBERS.Growth_Int_Bucket, 'N/A') as Growth_Int_Bucket,
     SUBSCRIBERS.Growth_Channel,
-    coalesce(SUBSCRIBERS.Incentivization, 'Unincentivized') as Incentivization,
     count(Email) Total_Volume,
     sum(CASE WHEN unique_opens > 0 THEN 1 ELSE 0 END) Openers,
     sum(CASE WHEN total_clicks > 0 THEN 1 ELSE 0 END) Clickers,
@@ -29,10 +28,22 @@ SELECT
     sum(CASE WHEN status = 'Bounced' THEN 1 ELSE 0 END) Bounced_Volume
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE FIRST_SEND > '2021-12-31'
-Group by 1,2,3,4,5
+-- WHERE FIRST_SEND > '2021-12-31' AND FIRST_SEND < '2022-02-01'
+-- WHERE FIRST_SEND > '2022-01-31' AND FIRST_SEND < '2022-03-01'
+-- WHERE FIRST_SEND > '2022-02-28' AND FIRST_SEND < '2022-04-01'
+-- WHERE FIRST_SEND > '2022-03-31' AND FIRST_SEND < '2022-05-01'
+ WHERE FIRST_SEND > '2022-04-30' AND FIRST_SEND < '2022-06-01'
+-- WHERE FIRST_SEND > '2022-05-31' AND FIRST_SEND < '2022-07-01'
+-- WHERE FIRST_SEND > '2022-06-30' AND FIRST_SEND < '2022-08-01'
+-- WHERE FIRST_SEND > '2022-07-31' AND FIRST_SEND < '2022-09-01'
+-- WHERE FIRST_SEND > '2022-08-31' AND FIRST_SEND < '2022-10-01'
+-- WHERE FIRST_SEND > '2022-09-30' AND FIRST_SEND < '2022-11-01'
+-- WHERE FIRST_SEND > '2022-10-31' AND FIRST_SEND < '2022-12-01'
+-- WHERE FIRST_SEND > '2022-11-30' AND FIRST_SEND < '2023-01-01'
+Group by 1,2,3,4
 )
 
 select *
 from Total_subs
-ORDER BY 1
+where growth_summary not ilike '%API%'
+ORDER BY 1,2,3
