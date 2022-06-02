@@ -49,4 +49,24 @@ URL ilike '%the-first-raptors-star%' or
 URL ilike '%babbel%' or 
 URL ilike '%olliepets%' or 
 URL ilike '%keepherinplay%' or
-URL ilike '%policyme%'
+URL ilike '%policyme%' OR 
+URL ilike '%golfmonthly%' or
+URL ilike '%muskokabrewery%'or 
+URL ilike '%thegetrealmovement%' or
+URL ilike '%meritbeauty%' or 
+URL ilike '%keepherinplay%' or 
+URL ilike '%masbasbas%' or
+URL ilike '%myollie%' or
+URL ilike '%wilmajeanwrinkles%' or
+URL ilike '%jack%' or
+URL ilike '%future%' or
+URL ilike '%futurefitness%' or 
+URL ilike '%iucn%' or 
+URL ilike '%parley%' or
+URL ilike '%tangerine%' or
+URL ilike '%justwomenssports%' or
+URL ilike '%bluehens%' or 
+URL ilike '%thegetrealmovement%' or 
+URL ilike '%foodandwine%' or 
+URL ilike '%nba.com%' or 
+URL ilike '%cometeer%'

@@ -19,5 +19,5 @@ incent as (
 )
 
 select * from incent 
-where campaign_date > '2021-12-31'
+where Campaign_Date > dateadd(month, -2, GETDATE())
 order by 1

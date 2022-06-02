@@ -18,7 +18,8 @@ SELECT
     campaign_name,
     -1*(count(EMAIL)) as Churn
 FROM SUBSCRIBERS 
-WHERE date_status_changed > dateadd(day, -8, GETDATE()) --Sunday
+WHERE 
+date_status_changed > dateadd(day, -8, GETDATE()) --Sunday
 AND date_status_changed < GETDATE() --Monday
 AND status <> 'Active'
 Group by 1,2,3,4,5,6,7,8,9,10,11,12

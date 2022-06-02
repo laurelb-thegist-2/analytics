@@ -35,5 +35,6 @@ Group by 1,2,3,4,5,6,7,8,9,10,11,12
 select * from user_data_by_growth_channel
 --WHERE FIRST_SEND > dateadd(week, -2, GETDATE()) and CITIES = 'DAL' and Growth_Channel ilike '%organic/unknown%' and status = 'Active'
 ORDER BY 1,2,3,4,5,6
+limit 1000000
 
 
