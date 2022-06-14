@@ -64,9 +64,11 @@ URL ilike '%futurefitness%' or
 URL ilike '%iucn%' or 
 URL ilike '%parley%' or
 URL ilike '%tangerine%' or
-URL ilike '%justwomenssports%' or
 URL ilike '%bluehens%' or 
 URL ilike '%thegetrealmovement%' or 
 URL ilike '%foodandwine%' or 
-URL ilike '%nba.com%' or 
-URL ilike '%cometeer%'
+URL ilike '%cometeer%' or 
+URL ilike '%PMETyfE!KM2ziNG%' or
+URL ilike '%32210623%' or 
+URL ilike '%cnbc.com/2021/03/18%' or
+URL ilike '%wnba-atlanta-dream-rhyne-howard%'

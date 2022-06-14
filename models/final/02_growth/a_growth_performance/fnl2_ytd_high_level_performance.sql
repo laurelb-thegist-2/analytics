@@ -13,7 +13,6 @@ SELECT
     coalesce(SUBSCRIBERS.Growth_Summary, 'Organic') as Growth_Summary,
     coalesce(SUBSCRIBERS.Growth_Bucket, 'Organic/Unknown') as Growth_Bucket,
     coalesce(SUBSCRIBERS.Growth_Int_Bucket, 'N/A') as Growth_Int_Bucket,
-    SUBSCRIBERS.Growth_Channel,
     count(Email) Total_Volume,
     sum(CASE WHEN unique_opens > 0 THEN 1 ELSE 0 END) Openers,
     sum(CASE WHEN total_clicks > 0 THEN 1 ELSE 0 END) Clickers,
@@ -29,9 +28,9 @@ SELECT
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
 WHERE FIRST_SEND > '2021-12-31'
-Group by 1,2,3,4
+Group by 1,2,3
 )
 
 select *
 from Total_subs
-ORDER BY 1
+ORDER BY 1,2,3

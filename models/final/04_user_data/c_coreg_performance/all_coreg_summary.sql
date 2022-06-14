@@ -26,5 +26,5 @@ Group by 1,2,3,4,5,6,7
 )
 
 select * from user_data_summary
-where Growth_Int_Bucket IS NOT NULL AND FIRST_SEND > '2022-01-31' AND FIRST_SEND < '2022-03-01'
+where Growth_Int_Bucket IS NOT NULL AND FIRST_SEND > '2022-04-30' AND FIRST_SEND < '2022-06-01' and Growth_Channel ilike '%mowMedia%'
 limit 100000

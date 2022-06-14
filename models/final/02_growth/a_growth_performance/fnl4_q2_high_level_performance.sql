@@ -33,4 +33,4 @@ Group by 1,2,3
 
 select *
 from Total_subs
-ORDER BY 1
+ORDER BY 1,2,3
