@@ -14,10 +14,10 @@ select
     Cities,
     Delivered,
     MOST_RECENT_OPEN,
-    Recency_Rating,
+    Recency_Rating as Opens_Recency_Rating,
     Unique_Opens,
     UNIQUE_OPEN_RATE,
-    Frequency_Rating,
+    Frequency_Rating as Opens_Frequency_Rating,
     CASE 
         WHEN 
             Recency_Frequency = 34 or 

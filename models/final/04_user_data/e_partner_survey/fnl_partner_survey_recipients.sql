@@ -11,10 +11,10 @@ SELECT
     coalesce(sum(unique_opens)/sum(DEVLIERED), 0) as UNIQUE_OPEN_RATE,
     coalesce(sum(total_clicks)/sum(DEVLIERED), 0) as CLICK_RATE
 FROM user_data_summary
-WHERE FIRST_SEND < '2022-02-01' and status = 'Active' AND CLICK_RATE > 0
+WHERE FIRST_SEND < dateadd(month, -1, GETDATE()) and status = 'Active' AND UNIQUE_OPEN_RATE > 0.30 and CLICK_RATE > 0 and Country = 'US'
 and Partner_Engagement_Surveys IS null 
 GROUP BY 1,2,3,4,5
 
-limit 10000
+
 
 

@@ -20,6 +20,7 @@ SELECT
     MOST_RECENT_SEND,
     FIRST_OPEN,
     MOST_RECENT_OPEN,
+    MOST_RECENT_CLICK,
     sum(delivered) AS DELIVERED,
     sum(unique_opens) as UNIQUE_OPENS,
     sum(total_opens) as TOTAL_OPENS,
@@ -29,7 +30,7 @@ SELECT
     case when sum(total_opens) > 0 then sum(total_clicks)/sum(total_opens) else 0 end as TOTAL_CTOR
 FROM SUBSCRIBERS
 LEFT JOIN OPEN_SEND_CLICK_SUMMARY using (EMAIL)
-Group by 1,2,3,4,5,6,7,8,9,10,11,12
+Group by 1,2,3,4,5,6,7,8,9,10,11,12,13
 )
 
 select * from user_data_by_growth_channel

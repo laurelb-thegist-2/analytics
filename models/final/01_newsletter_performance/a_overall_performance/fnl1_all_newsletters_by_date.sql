@@ -33,16 +33,17 @@ campaign_data_by_date as (
     SUM(sends_subscribers_unsubs.total_unsubscribes) / sum(sends_subscribers_unsubs.Delivered_Emails) Unsubscribe_Rate,
     SUM(sends_subscribers_unsubs.total_unsubscribes) / sum(opens_clicks_subscribers.Unique_Opens) Unsubscribe_per_Open,
     SUM(opens_clicks_subscribers.total_partner_clicks) total_partner_clicks,
-    SUM(opens_clicks_subscribers.unique_partner_clicks) unique_partner_clicks,
-    sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(sends_subscribers_unsubs.Delivered_Emails) Total_Partner_Click_Rate,
-    sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(sends_subscribers_unsubs.Delivered_Emails)  Unique_Partner_Click_Rate,
-    sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_Partner_CTOR,
-    sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_Partner_CTOR
+    SUM(opens_clicks_subscribers.unique_partner_clicks) unique_partner_clicks
+    --sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(sends_subscribers_unsubs.Delivered_Emails) Total_Partner_Click_Rate,
+    --sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(sends_subscribers_unsubs.Delivered_Emails)  Unique_Partner_Click_Rate,
+    --sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_Partner_CTOR,
+    --sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_Partner_CTOR
     from sends_subscribers_unsubs 
     LEFT JOIN opens_clicks_subscribers using (Campaign_ID, Name, Campaign_Date)
     GROUP BY 1,2
 )
 
-select * from campaign_data_by_date
+select *
+from campaign_data_by_date
 WHERE Campaign_Date > dateadd(month, -1, GETDATE())
 ORDER BY 1

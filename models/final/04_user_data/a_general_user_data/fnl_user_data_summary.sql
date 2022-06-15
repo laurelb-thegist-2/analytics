@@ -43,6 +43,4 @@ Group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
 )
 
 select *
-from user_data_summary 
-where Growth_Bucket = 'Organic/Unknown' and First_Send > '2021-12-31'
-limit 100000
+from user_data_summary
