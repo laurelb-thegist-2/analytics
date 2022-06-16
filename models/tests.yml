@@ -47,20 +47,3 @@ models:
           - relationships:
               to: ref('int2_final_subscribers')
               field: Email
-  - name: int1_rf_opens_rating
-    columns: 
-      - name: EMAIL
-        description: The primary identifier for a subscirber. 
-        tests:
-          - relationships:
-              to: ref('fnl_user_data')
-              field: Email
-  - name: int2_rf_opens_quality
-    columns: 
-      - name: EMAIL
-        description: The primary identifier for a subscirber. 
-        tests:
-          - relationships:
-              to: ref('int1_rf_opens_rating')
-              field: Email
-
