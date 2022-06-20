@@ -10,9 +10,9 @@ partner_clicks as (
         count(email) total_clicks,
         count(distinct email) unique_clicks
     from campaign_clicks_details_subs
-    where URL ilike '%rbccanadianopen%' --or URL ilike '%NIK-07%' --line to change, where you add URL search term
+    where URL ilike '%nba.com%' and URL not ilike '%wnba%' and URL not ilike '%turnovers-doom-celtics%' --or URL ilike '%NIK-07%' --line to change, where you add URL search term
     GROUP BY 1,2--,3
 )
 
 SELECT * FROM partner_clicks
-WHERE CAMPAIGN_DATE = '2022-05-29' --line to change, this is where you add the campaign date
+WHERE CAMPAIGN_DATE = '2022-06-13' --line to change, this is where you add the campaign date

@@ -29,13 +29,13 @@ campaign_data_by_country as (
     sum(opens_clicks_subscribers.Total_Clicks) / sum(sends_subscribers.Delivered_Emails) Total_Click_Rate,
     sum(opens_clicks_subscribers.Unique_Clicks) / sum(sends_subscribers.Delivered_Emails)  Unique_Click_Rate,
     sum(opens_clicks_subscribers.Total_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_CTOR,
-    sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR,
-    sum(opens_clicks_subscribers.Total_Partner_Clicks) Total_Partner_Clicks,
-    sum(opens_clicks_subscribers.Unique_Partner_Clicks) Unique_Partner_Clicks,
-    sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(sends_subscribers.Delivered_Emails) Total_Partner_Click_Rate,
-    sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(sends_subscribers.Delivered_Emails)  Unique_Partmer_Click_Rate,
-    sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_Partner_CTOR,
-    sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_Partner_CTOR
+    sum(opens_clicks_subscribers.Unique_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_CTOR--,
+    --sum(opens_clicks_subscribers.Total_Partner_Clicks) Total_Partner_Clicks,
+    --sum(opens_clicks_subscribers.Unique_Partner_Clicks) Unique_Partner_Clicks,
+    --sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(sends_subscribers.Delivered_Emails) Total_Partner_Click_Rate,
+    --sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(sends_subscribers.Delivered_Emails)  Unique_Partmer_Click_Rate,
+    --sum(opens_clicks_subscribers.Total_Partner_Clicks) / sum(opens_clicks_subscribers.Total_Opens) Total_Partner_CTOR,
+    --sum(opens_clicks_subscribers.Unique_Partner_Clicks) / sum(opens_clicks_subscribers.Unique_Opens) Unique_Partner_CTOR
     from opens_clicks_subscribers
     RIGHT JOIN sends_subscribers using (Campaign_ID, Name, Campaign_Date, Country, City, Growth_Channel, Growth_Bucket, Incentivization)
     GROUP BY 1,2,3
