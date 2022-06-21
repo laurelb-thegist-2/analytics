@@ -47,3 +47,11 @@ models:
           - relationships:
               to: ref('int2_final_subscribers')
               field: Email
+  - name: recency_frequency
+    columns: 
+      - name: EMAIL
+        description: The primary identifier for a subscirber. 
+        tests:
+          - relationships:
+              to: ref('fnl_user_data')
+              field: Email
