@@ -42,7 +42,13 @@ campaign_data_by_city as (
     GROUP BY 1,2,3,4
 )
 
-select *
+select 
+*,
+Unique_Open_Rate - 0.09 as Adjusted_UOR,
+(Unique_Open_Rate - 0.09)*Delivered*(Total_Opens / Unique_Opens) / Delivered as Adjusted_TOR,
+ROUND((Unique_Open_Rate - 0.09)*Delivered) as Adjusted_Unique_Opens,
+ROUND((Unique_Open_Rate - 0.09)*Delivered*(Total_Opens / Unique_Opens)) as Adjusted_Total_Opens,
+Total_Clicks / ((Unique_Open_Rate - 0.09)*Delivered*(Total_Opens / Unique_Opens)) as Adjusted_CTOR
 from campaign_data_by_city
 WHERE Campaign_Date is not null and Campaign_Date > dateadd(month, -1, GETDATE())
 ORDER BY 1,2,3

@@ -28,10 +28,14 @@ SELECT
     sum(CASE WHEN status = 'Bounced' THEN 1 ELSE 0 END) Bounced_Volume
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE 
---FIRST_SEND > '2022-03-31' and FIRST_SEND < '2022-05-01'
+WHERE
+--FIRST_SEND > '2021-12-31' and FIRST_SEND < '2022-02-01' --January
+--FIRST_SEND > '2022-01-31' and FIRST_SEND < '2022-03-01' --February
+--FIRST_SEND > '2022-02-28' and FIRST_SEND < '2022-04-01' --March 
+--FIRST_SEND > '2022-03-31' and FIRST_SEND < '2022-05-01' --April
 --FIRST_SEND > '2022-04-30' and FIRST_SEND < '2022-06-01' --May
-FIRST_SEND > '2022-05-31' and FIRST_SEND < '2022-07-01' --June
+--FIRST_SEND > '2022-05-31' and FIRST_SEND < '2022-07-01' --June
+FIRST_SEND > '2022-06-30' and FIRST_SEND < '2022-08-01' --July
 and Growth_Summary not ilike '%API%' and Growth_Summary not ilike '%Contests%'
 Group by 1,2,3,4
 )

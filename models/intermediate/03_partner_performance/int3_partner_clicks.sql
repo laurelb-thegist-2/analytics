@@ -71,4 +71,10 @@ URL ilike '%cometeer%' or
 URL ilike '%PMETyfE!KM2ziNG%' or
 URL ilike '%32210623%' or 
 URL ilike '%cnbc.com/2021/03/18%' or
-URL ilike '%wnba-atlanta-dream-rhyne-howard%'
+URL ilike '%wnba-atlanta-dream-rhyne-howard%' or 
+URL ilike '%76009dbf-fd50-4c67-a1c0-dbe1e1380c62%' or 
+URL ilike '%moroccanoil%' or
+URL ilike '%troy-polamalu-hair%' or 
+URL ilike '%e2dc11b0-8c8d-429f-8fef-d23147b9bb65%' or 
+URL ilike '%nba-75th-anniversary-basketball%' or
+URL ilike '%unesco.org/themes/gender-equality-sports-media%'

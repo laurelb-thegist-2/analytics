@@ -27,7 +27,7 @@ SELECT
     sum(CASE WHEN status = 'Bounced' THEN 1 ELSE 0 END) Bounced_Volume
 FROM OPEN_SEND_CLICK_SUMMARY
 LEFT JOIN SUBSCRIBERS using (EMAIL)
-WHERE FIRST_SEND < '2022-04-01' and FIRST_SEND > '2021-12-31' and Growth_Int_Bucket ilike '%leadpulse%'
+WHERE FIRST_SEND < '2022-04-01' and FIRST_SEND > '2021-12-31'
 Group by 1,2,3
 )
 
